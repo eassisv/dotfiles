@@ -22,12 +22,14 @@ return require('packer').startup(function ()
     use 'hrsh7th/cmp-path'
     use 'hrsh7th/cmp-cmdline'
     use 'hrsh7th/nvim-cmp'
+    use 'hrsh7th/cmp-vsnip'
+    use 'hrsh7th/vim-vsnip'
 
     use 'nvim-lua/plenary.nvim'
     use 'nvim-telescope/telescope.nvim'
     use 'nvim-lualine/lualine.nvim'
-    -- use 'romgrk/barbar.nvim'
     use {'akinsho/bufferline.nvim', tag = "v2.*"}
-
     use 'jghauser/mkdir.nvim'
+    use 'kyazdani42/nvim-tree.lua'
+    use 'lewis6991/spellsitter.nvim'
 end)
