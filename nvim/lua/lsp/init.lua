@@ -34,7 +34,7 @@ local lsp_flags = {
 local lsp = require 'lspconfig'
 local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
 
-local servers = { 'pyright', 'sumneko_lua' }
+local servers = { 'pyright', 'sumneko_lua', 'html', 'cssls', 'vuels', 'tsserver' }
 
 for _, server in ipairs(servers) do
     local options = {}
