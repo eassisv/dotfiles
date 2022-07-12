@@ -37,11 +37,13 @@ local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protoco
 local servers = { 'pyright', 'sumneko_lua' }
 
 for _, server in ipairs(servers) do
-    local server_options = require('lsp.' .. server)
-
     local options = {}
-    for key, value in pairs(server_options) do
-        options[key] = value
+    local ok, server_options = pcall(require, 'lsp.' .. server)
+
+    if ok then
+        for key, value in pairs(server_options) do
+            options[key] = value
+        end
     end
 
     options.capabilities = capabilities
