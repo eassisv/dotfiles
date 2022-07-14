@@ -1,5 +1,11 @@
+vim.o.guifont = 'Iosevka:h15'
+vim.cmd "source ~/.config/nvim/basic.vim"
+vim.cmd "colorscheme falcon"
+
 local options = {
     opt = {
+        tabstop = 2,
+        shiftwidth = 2,
         spell = true,
         spelllang = 'en_us,pt_br',
         clipboard = 'unnamedplus',
@@ -9,6 +15,7 @@ local options = {
         mapleader = ','
     }
 }
+
 
 for scope, table in pairs(options) do
     for setting, value in pairs(table) do

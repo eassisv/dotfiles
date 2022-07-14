@@ -11,10 +11,15 @@ local n = {
     ['<leader>tt'] = '<cmd>NvimTreeToggle<cr>'
 }
 
-local mappings = { n = n }
+local t = {
+    ['<C-[>'] = '<C-\\><C-n>',
+    ['Esc'] = '<C-\\><C-n>',
+}
+
+local mappings = { n = n, t = t }
 
 for mode, mapping in pairs(mappings) do
     for lhs, rhs in pairs(mapping) do
-        vim.keymap.set(mode, lhs, rhs, nil)
+        vim.keymap.set(mode, lhs, rhs, { noremap = true, silent = true })
     end
 end

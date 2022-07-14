@@ -2,7 +2,6 @@ local plugins = {
     'statusline',
     'tabbar',
     'nvim-lsp-installer',
-    'nvim-cmp',
     'nvim-tree',
     'spellsitter',
     'telescope',
