@@ -33,4 +33,9 @@ return require('packer').startup(function()
   use 'jghauser/mkdir.nvim'
   use 'kyazdani42/nvim-tree.lua'
   use 'lewis6991/spellsitter.nvim'
+  use 'tpope/vim-surround'
+  use {
+    "windwp/nvim-autopairs",
+    config = function() require("nvim-autopairs").setup {} end
+  }
 end)

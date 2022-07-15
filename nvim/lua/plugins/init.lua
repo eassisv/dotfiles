@@ -5,8 +5,10 @@ local plugins = {
     'nvim-tree',
     'spellsitter',
     'telescope',
-    'nvim-treesitter'
+    'nvim-treesitter',
 }
+
+require('nvim-tree').setup()
 
 for _, plugin in ipairs(plugins) do
     local ok, err = pcall(require, 'plugins.' .. plugin)
@@ -14,3 +16,4 @@ for _, plugin in ipairs(plugins) do
         vim.api.nvim_err_writeln('Failed to load module ' .. plugin .. '\n' .. err)
     end
 end
+
