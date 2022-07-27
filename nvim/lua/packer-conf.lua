@@ -6,6 +6,8 @@ return require('packer').startup(function()
   -- ui
   use 'PyGamer0/darc.nvim'
   use 'fenetikm/falcon'
+  use 'jacoborus/tender.vim'
+  use 'bluz71/vim-moonfly-colors'
   use 'rktjmp/lush.nvim'
   use 'kyazdani42/nvim-web-devicons'
   --

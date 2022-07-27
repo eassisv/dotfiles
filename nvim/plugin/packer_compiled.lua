@@ -191,6 +191,16 @@ _G.packer_plugins = {
     path = "/home/everton/.local/share/nvim/site/pack/packer/start/telescope.nvim",
     url = "https://github.com/nvim-telescope/telescope.nvim"
   },
+  ["tender.vim"] = {
+    loaded = true,
+    path = "/home/everton/.local/share/nvim/site/pack/packer/start/tender.vim",
+    url = "https://github.com/jacoborus/tender.vim"
+  },
+  ["vim-moonfly-colors"] = {
+    loaded = true,
+    path = "/home/everton/.local/share/nvim/site/pack/packer/start/vim-moonfly-colors",
+    url = "https://github.com/bluz71/vim-moonfly-colors"
+  },
   ["vim-surround"] = {
     loaded = true,
     path = "/home/everton/.local/share/nvim/site/pack/packer/start/vim-surround",

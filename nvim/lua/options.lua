@@ -1,6 +1,6 @@
 vim.o.guifont = 'Iosevka:h15'
 vim.cmd "source ~/.config/nvim/basic.vim"
-vim.cmd "colorscheme falcon"
+vim.cmd "colorscheme tender"
 
 local options = {
     opt = {
@@ -10,6 +10,8 @@ local options = {
         spelllang = 'en_us,pt_br',
         clipboard = 'unnamedplus',
         mouse = 'a',
+        number = true,
+        relativenumber = true
     },
     g = {
         mapleader = ','
