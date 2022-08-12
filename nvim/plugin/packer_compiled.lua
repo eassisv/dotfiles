@@ -105,6 +105,11 @@ _G.packer_plugins = {
     path = "/home/everton/.local/share/nvim/site/pack/packer/start/cmp-vsnip",
     url = "https://github.com/hrsh7th/cmp-vsnip"
   },
+  ["codeschool.nvim"] = {
+    loaded = true,
+    path = "/home/everton/.local/share/nvim/site/pack/packer/start/codeschool.nvim",
+    url = "https://github.com/adisen99/codeschool.nvim"
+  },
   ["darc.nvim"] = {
     loaded = true,
     path = "/home/everton/.local/share/nvim/site/pack/packer/start/darc.nvim",
@@ -115,10 +120,20 @@ _G.packer_plugins = {
     path = "/home/everton/.local/share/nvim/site/pack/packer/start/falcon",
     url = "https://github.com/fenetikm/falcon"
   },
+  ["gruvbox.nvim"] = {
+    loaded = true,
+    path = "/home/everton/.local/share/nvim/site/pack/packer/start/gruvbox.nvim",
+    url = "https://github.com/ellisonleao/gruvbox.nvim"
+  },
   ["lspkind.nvim"] = {
     loaded = true,
     path = "/home/everton/.local/share/nvim/site/pack/packer/start/lspkind.nvim",
     url = "https://github.com/onsails/lspkind.nvim"
+  },
+  ["lspsaga.nvim"] = {
+    loaded = true,
+    path = "/home/everton/.local/share/nvim/site/pack/packer/start/lspsaga.nvim",
+    url = "https://github.com/glepnir/lspsaga.nvim"
   },
   ["lualine.nvim"] = {
     loaded = true,

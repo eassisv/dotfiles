@@ -1,6 +1,7 @@
 vim.o.guifont = 'Iosevka:h15'
 vim.cmd "source ~/.config/nvim/basic.vim"
-vim.cmd "colorscheme tender"
+vim.g.material_style = "darker"
+vim.cmd "colorscheme material"
 
 local options = {
     opt = {
@@ -14,7 +15,7 @@ local options = {
         relativenumber = true
     },
     g = {
-        mapleader = ','
+        mapleader = ',',
     }
 }
 

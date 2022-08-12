@@ -6,6 +6,7 @@ local plugins = {
     'spellsitter',
     'telescope',
     'nvim-treesitter',
+    'lspsaga',
 }
 
 require('nvim-tree').setup()

@@ -8,6 +8,10 @@ return require('packer').startup(function()
   use 'fenetikm/falcon'
   use 'jacoborus/tender.vim'
   use 'bluz71/vim-moonfly-colors'
+  use 'adisen99/codeschool.nvim'
+  use 'ellisonleao/gruvbox.nvim'
+  use 'mhartington/oceanic-next'
+  use 'marko-cerovac/material.nvim'
   use 'rktjmp/lush.nvim'
   use 'kyazdani42/nvim-web-devicons'
   --
@@ -27,6 +31,7 @@ return require('packer').startup(function()
   use 'hrsh7th/cmp-vsnip'
   use 'hrsh7th/vim-vsnip'
   use 'onsails/lspkind.nvim'
+  use 'glepnir/lspsaga.nvim'
 
   use 'nvim-lua/plenary.nvim'
   use 'nvim-telescope/telescope.nvim'
