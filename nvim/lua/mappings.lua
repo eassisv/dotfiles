@@ -1,31 +1,34 @@
 local n = {
-  ['<leader>w'] = ':w!<cr>',
-  ['<C-j>'] = '<C-W>j',
-  ['<C-k>'] = '<C-W>k',
-  ['<C-h>'] = '<C-W>h',
-  ['<C-l>'] = '<C-W>l',
+	-- quick save
+	['<leader>w'] = ':w!<cr>',
 
-  ['<leader>ff'] = '<cmd>Telescope find_files<cr>',
-  ['<leader>fg'] = '<cmd>Telescope live_grep<cr>',
-  ['\\'] = '<cmd>Telescope buffers<cr>',
-  ['<leader>fh'] = '<cmd>Telescope help_tags<cr>',
-  ['<leader>tt'] = '<cmd>NvimTreeToggle<cr>',
-
-  ['<leader>e'] = '<cmd>Lspsaga show_line_diagnostics<cr>',
-  ['<leader>ca'] = '<cmd>Lspsaga code_action<cr>',
+	-- windows change
+	['<C-j>'] = '<C-W>j',
+	['<C-k>'] = '<C-W>k',
+	['<C-h>'] = '<C-W>h',
+	['<C-l>'] = '<C-W>l',
+	-- move lines
+	['<M-j>'] = 'mz:m+<cr>`z',
+	['<M-k>'] = 'mz:m-2<cr>`z',
+	--
 }
 
-vim.keymap.set('n', '<leader>e', '<cmd>Lspsaga show_cursor_diagnostics<cr>')
+local v = {
+	-- Move lines and selections
+	['<M-j>'] = ":m'>+<cr>`<my`>mzgv`yo`z",
+	['<M-k>'] = ":m'<-2<cr>`<my`>mzgv`yo`z",
+	--
+}
 
 local t = {
-  ['<C-[>'] = '<C-\\><C-n>',
-  ['Esc'] = '<C-\\><C-n>',
+	['<C-[>'] = '<C-\\><C-n>',
+	['Esc'] = '<C-\\><C-n>',
 }
 
-local mappings = { n = n, t = t }
+local mappings = { n = n, v = v, t = t }
 
 for mode, mapping in pairs(mappings) do
-  for lhs, rhs in pairs(mapping) do
-    vim.keymap.set(mode, lhs, rhs, { noremap = true, silent = true })
-  end
+	for lhs, rhs in pairs(mapping) do
+		vim.keymap.set(mode, lhs, rhs, { remap = false, silent = true })
+	end
 end

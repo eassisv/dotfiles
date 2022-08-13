@@ -1,27 +1,29 @@
-vim.o.guifont = 'Iosevka:h15'
-vim.cmd "source ~/.config/nvim/basic.vim"
-vim.g.material_style = "darker"
-vim.cmd "colorscheme material"
-
 local options = {
-    opt = {
-        tabstop = 2,
-        shiftwidth = 2,
-        spell = true,
-        spelllang = 'en_us,pt_br',
-        clipboard = 'unnamedplus',
-        mouse = 'a',
-        number = true,
-        relativenumber = true
-    },
-    g = {
-        mapleader = ',',
-    }
+	opt = {
+		clipboard = 'unnamedplus',
+
+		tabstop = 2,
+		shiftwidth = 2,
+
+		spell = true,
+		spelllang = 'en_us,pt_br',
+
+		number = true,
+		relativenumber = true,
+		scrolloff = 7,
+		mouse = 'a'
+	},
+	g = {
+		mapleader = ',',
+		material_style = "darker"
+	}
 }
 
-
 for scope, table in pairs(options) do
-    for setting, value in pairs(table) do
-        vim[scope][setting] = value
-    end
+	for setting, value in pairs(table) do
+		vim[scope][setting] = value
+	end
 end
+
+vim.cmd "colorscheme material"
+
