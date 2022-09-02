@@ -25,5 +25,6 @@ for scope, table in pairs(options) do
 	end
 end
 
+vim.cmd "set ww+=<,>,h,l,[,]"
 vim.cmd "colorscheme material"
 

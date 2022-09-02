@@ -2,7 +2,10 @@ local saga = require('lspsaga')
 
 saga.init_lsp_saga({
 	border_style = 'rounded',
-	rename_action_quit = 'q'
+	rename_action_quit = '<Esc>',
+	code_action_keys = {
+    quit = "<Esc>",
+	}
 })
 
 vim.keymap.set('n', '<leader>e', '<cmd>Lspsaga show_line_diagnostics<cr>', { silent = true })
