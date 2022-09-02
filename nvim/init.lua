@@ -1,7 +1,7 @@
-require('options')
-require('mappings')
 require('packer-conf')
+require('options')
 require('plugins')
-require('autocompletion')
 require('lsp')
+require('autocompletion')
+require('mappings')
 
