@@ -4,6 +4,7 @@ local options = {
 
 		tabstop = 2,
 		shiftwidth = 2,
+		expandtab = true,
 
 		spell = true,
 		spelllang = 'en_us,pt_br',

@@ -17,6 +17,7 @@ local v = {
 	-- Move lines and selections
 	['<M-j>'] = ":m'>+<cr>`<my`>mzgv`yo`z",
 	['<M-k>'] = ":m'<-2<cr>`<my`>mzgv`yo`z",
+  ['p'] = '"0p',
 	--
 }
 
@@ -32,3 +33,4 @@ for mode, mapping in pairs(mappings) do
 		vim.keymap.set(mode, lhs, rhs, { remap = false, silent = true })
 	end
 end
+
