@@ -1,12 +1,12 @@
 vim.diagnostic.config({
-	virtual_text = false,
-	underline = true
+  virtual_text = false,
+  underline = true
 })
 
 local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
 for type, icon in pairs(signs) do
-	local hl = "DiagnosticSign" .. type
-	vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
+  local hl = "DiagnosticSign" .. type
+  vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
 end
 
 local opts = { noremap = true, silent = true }
@@ -31,34 +31,46 @@ local on_attach = function(client, bufnr)
   vim.keymap.set('n', '<leader>fd', vim.lsp.buf.formatting, bufopts)
 end
 
-local lsp_flags = {
+local flags = {
   -- This is the default in Nvim 0.7+
   debounce_text_changes = 150,
 }
 
 local lsp = require('lspconfig')
-local lsp_installer = require('nvim-lsp-installer')
+-- local lsp_installer = require('nvim-lsp-installer')
 local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
 
-local servers = { 'pyright', 'sumneko_lua', 'html', 'cssls', 'vuels', 'tsserver', 'rust_analyzer' }
+require('mason-lspconfig').setup_handlers({
+  function(server_name)
+    lsp[server_name].setup({ on_attach, capabilities, flags })
+  end,
+  ['sumneko_lua'] = function()
+    lsp['sumneko_lua'].setup({ on_attach, capabilities, flags, settings = require('lsp.sumneko_lua') })
+  end,
+  ['jsonls'] = function()
+    lsp['jsonls'].setup({ on_attach, capabilities, flags, settings = require('lsp.jsonls') })
+  end,
+})
 
-for _, server in ipairs(lsp_installer.get_installed_servers()) do
-  table.insert(servers, server.name)
-end
+-- local servers = { 'pyright', 'sumneko_lua', 'html', 'cssls', 'vuels', 'tsserver', 'rust_analyzer' }
 
-for _, server in ipairs(servers) do
-  local options = {}
-  local ok, server_options = pcall(require, 'lsp.' .. server)
-
-  if ok then
-    for key, value in pairs(server_options) do
-      options[key] = value
-    end
-  end
-
-  options.capabilities = capabilities
-  options.on_attach = on_attach
-  options.flags = lsp_flags
-
-  lsp[server].setup(options)
-end
+-- for _, server in ipairs(lsp_installer.get_installed_servers()) do
+--   table.insert(servers, server.name)
+-- end
+--
+-- for _, server in ipairs(servers) do
+--   local options = {}
+--   local ok, server_options = pcall(require, 'lsp.' .. server)
+--
+--   if ok then
+--     for key, value in pairs(server_options) do
+--       options[key] = value
+--     end
+--   end
+--
+--   options.capabilities = capabilities
+--   options.on_attach = on_attach
+--   options.flags = lsp_flags
+--
+--   lsp[server].setup(options)
+-- end

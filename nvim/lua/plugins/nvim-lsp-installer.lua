@@ -1,6 +1,5 @@
-local lsp_installer = require('nvim-lsp-installer')
 
-lsp_installer.setup({
+require('nvim-lsp-installer').setup({
     ui = {
 				border = 'rounded',
         icons = {

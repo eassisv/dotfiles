@@ -13,5 +13,5 @@ vim.keymap.set('n', '<leader>e', '<cmd>Lspsaga show_cursor_diagnostics<cr>', { s
 vim.keymap.set('n', '<leader>ca', '<cmd>Lspsaga code_action<cr>')
 
 vim.keymap.set("n", "<leader>gs", "<Cmd>Lspsaga signature_help<CR>", { silent = true })
-vim.keymap.set('n', '<leader>dp', '<cmd>Lspsaga preview_definition<cr>', { silent = true })
+vim.keymap.set('n', '<leader>dp', '<cmd>Lspsaga peek_definition<cr>', { silent = true })
 

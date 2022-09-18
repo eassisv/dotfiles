@@ -1,13 +1,12 @@
 local plugins = {
     'statusline',
-    'nvim-lsp-installer',
+    'mason',
     'nvim-tree',
     'telescope',
     'nvim-treesitter',
     'lspsaga',
+    'barbar'
 }
-
-require('nvim-tree').setup()
 
 for _, plugin in ipairs(plugins) do
     local ok, err = pcall(require, 'plugins.' .. plugin)

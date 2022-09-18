@@ -17,7 +17,8 @@ return packer.startup(function(use)
 
 	-- lsp
 	use 'neovim/nvim-lspconfig'
-	use 'williamboman/nvim-lsp-installer'
+	use 'williamboman/mason.nvim'
+	use 'williamboman/mason-lspconfig.nvim'
 	use 'onsails/lspkind.nvim' -- Lsp UI
 	use 'glepnir/lspsaga.nvim' -- Lsp UI
 
@@ -64,4 +65,5 @@ return packer.startup(function(use)
 			require('Comment').setup()
 		end
 	}
+  use 'romgrk/barbar.nvim'
 end)

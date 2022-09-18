@@ -29,3 +29,7 @@ end
 vim.cmd "set ww+=<,>,h,l,[,]"
 vim.cmd "colorscheme material"
 
+vim.api.nvim_create_autocmd("TermOpen", {
+  pattern = "*", -- disable spellchecking in the embeded terminal
+  command = "setlocal nospell",
+})

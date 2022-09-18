@@ -10,6 +10,8 @@ local n = {
 	-- move lines
 	['<M-j>'] = 'mz:m+<cr>`z',
 	['<M-k>'] = 'mz:m-2<cr>`z',
+  ['c'] = '"0c',
+  ['s'] = '"0s',
 	--
 }
 
@@ -18,12 +20,14 @@ local v = {
 	['<M-j>'] = ":m'>+<cr>`<my`>mzgv`yo`z",
 	['<M-k>'] = ":m'<-2<cr>`<my`>mzgv`yo`z",
   ['p'] = '"0p',
+  ['c'] = '"0c',
+  ['s'] = '"0s',
 	--
 }
 
 local t = {
 	['<C-[>'] = '<C-\\><C-n>',
-	['Esc'] = '<C-\\><C-n>',
+	['<Esc>'] = '<C-\\><C-n>',
 }
 
 local mappings = { n = n, v = v, t = t }
@@ -33,4 +37,6 @@ for mode, mapping in pairs(mappings) do
 		vim.keymap.set(mode, lhs, rhs, { remap = false, silent = true })
 	end
 end
+
+vim.cmd "tnoremap <C-[> <C-\\><C-n>"
 
