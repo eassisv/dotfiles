@@ -1,11 +1,12 @@
 local plugins = {
     'statusline',
     'mason',
-    'nvim-tree',
+    'neo-tree',
     'telescope',
     'nvim-treesitter',
     'lspsaga',
-    'barbar'
+    'barbar',
+    'gitsigns'
 }
 
 for _, plugin in ipairs(plugins) do
