@@ -75,6 +75,6 @@ return packer.startup(function(use)
   }
   use 'romgrk/barbar.nvim'
   use 'gpanders/editorconfig.nvim'
-  use { 'lewis6991/impatient.nvim', config = function() require('impatient').setup() end }
+  use 'lewis6991/impatient.nvim'
   use 'lewis6991/gitsigns.nvim'
 end)
