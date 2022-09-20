@@ -19,7 +19,6 @@ local v = {
 	-- Move lines and selections
 	['<M-j>'] = ":m'>+<cr>`<my`>mzgv`yo`z",
 	['<M-k>'] = ":m'<-2<cr>`<my`>mzgv`yo`z",
-  ['p'] = '"0p',
   ['c'] = '"0c',
   ['s'] = '"0s',
 	--
