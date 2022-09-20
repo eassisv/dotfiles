@@ -6,7 +6,12 @@ if not ok then
 end
 
 local basic_setup = function(mod)
-  require(mod).setup()
+  local okk, m = pcall(require, mod)
+  if not okk then
+    print('Failed to require package ' .. mod)
+  else
+    m.setup()
+  end
 end
 
 return packer.startup(function(use)
@@ -41,7 +46,7 @@ return packer.startup(function(use)
 
   use 'jghauser/mkdir.nvim'
 
-  -- colorschemes
+  -- ui
   use 'PyGamer0/darc.nvim'
   use 'fenetikm/falcon'
   use 'jacoborus/tender.vim'
@@ -51,6 +56,7 @@ return packer.startup(function(use)
   use 'mhartington/oceanic-next'
   use 'marko-cerovac/material.nvim'
   use 'rktjmp/lush.nvim'
+
   --
 
   use 'kyazdani42/nvim-web-devicons'
@@ -66,16 +72,15 @@ return packer.startup(function(use)
       "MunifTanjim/nui.nvim",
     }
   }
-  use 'tpope/vim-surround'
+  -- use 'tpope/vim-surround'
+  use { 'kylechui/nvim-surround', config = basic_setup('nvim-surround') }
   use {
     'windwp/nvim-autopairs',
     config = basic_setup('nvim-autopairs')
   }
   use {
     'numToStr/Comment.nvim',
-    config = function()
-      require('Comment').setup()
-    end
+    config = basic_setup('Comment')
   }
   use 'romgrk/barbar.nvim'
   use 'gpanders/editorconfig.nvim'
