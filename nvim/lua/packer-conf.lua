@@ -5,11 +5,15 @@ if not ok then
   return
 end
 
+local basic_setup = function(mod)
+  require(mod).setup()
+end
+
 return packer.startup(function(use)
   use 'wbthomason/packer.nvim'
 
 
-  use { 'lewis6991/spellsitter.nvim', config = function() require('spellsitter').setup() end }
+  use { 'lewis6991/spellsitter.nvim', config = basic_setup('spellsitter') }
   use {
     'nvim-treesitter/nvim-treesitter',
     run = ':TSUpdate'
@@ -52,7 +56,7 @@ return packer.startup(function(use)
   use 'kyazdani42/nvim-web-devicons'
 
   use 'nvim-lualine/lualine.nvim'
-  use { 'akinsho/bufferline.nvim', config = function() require('bufferline').setup() end }
+  use { 'akinsho/bufferline.nvim', config = basic_setup('bufferline') }
   use {
     "nvim-neo-tree/neo-tree.nvim",
     branch = "v2.x",
@@ -65,7 +69,7 @@ return packer.startup(function(use)
   use 'tpope/vim-surround'
   use {
     'windwp/nvim-autopairs',
-    config = function() require('nvim-autopairs').setup() end
+    config = basic_setup('nvim-autopairs')
   }
   use {
     'numToStr/Comment.nvim',
@@ -77,4 +81,5 @@ return packer.startup(function(use)
   use 'gpanders/editorconfig.nvim'
   use 'lewis6991/impatient.nvim'
   use 'lewis6991/gitsigns.nvim'
+  use { 'MunifTanjim/exrc.nvim', config = basic_setup('exrc') }
 end)

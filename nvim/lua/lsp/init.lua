@@ -1,3 +1,5 @@
+local M = {}
+
 vim.diagnostic.config({
   underline = true
 })
@@ -39,22 +41,27 @@ require('mason-lspconfig').setup({
 
 local lsp = require('lspconfig')
 
-require('mason-lspconfig').setup_handlers({
-  function(server)
-    local options = {}
-    local ok, server_options = pcall(require, 'lsp.' .. server)
+local setup_server = function(server)
+  local options = {}
+  local ok, server_options = pcall(require, 'lsp.' .. server)
 
-    if ok then
-      for key, value in pairs(server_options) do
-        options[key] = value
-      end
+  if ok then
+    for key, value in pairs(server_options) do
+      options[key] = value
     end
-
-    options.capabilities = capabilities
-    options.on_attach = on_attach
-    options.flags = flags
-
-    lsp[server].setup(options)
   end
+
+  options.capabilities = capabilities
+  options.on_attach = on_attach
+  options.flags = flags
+
+  lsp[server].setup(options)
+end
+
+require('mason-lspconfig').setup_handlers({
+  setup_server
 })
 
+M.setup_server = setup_server
+
+return M
