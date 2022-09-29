@@ -10,7 +10,8 @@ local plugins = {
   'nvim-surround',
   'nvim-autopairs',
   'Comment',
-  'exrc'
+  'exrc',
+  'onedark'
 }
 
 local setup_default_or_raise = function (plug_name)

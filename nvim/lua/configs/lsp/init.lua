@@ -49,6 +49,13 @@ local on_attach = function(_, bufnr)
   nmap('<leader>fd', vim.lsp.buf.formatting, bufopts)
 end
 
+local on_attach_factory = function (cb)
+  return function(client, bufnr)
+    cb(client, bufnr)
+    on_attach(client, bufnr)
+  end
+end
+
 local flags = {
   debounce_text_changes = 150,
 }
@@ -65,15 +72,19 @@ local setup_server = function(server)
   local options = {}
   local ok, server_options = pcall(require, 'configs.lsp.servers.' .. server)
 
-  if ok then
-    for key, value in pairs(server_options) do
-      options[key] = value
-    end
-  end
-
   options.capabilities = capabilities
   options.on_attach = on_attach
   options.flags = flags
+
+  if ok then
+    for key, value in pairs(server_options) do
+      if key == 'on_attach' then
+        options.on_attach = on_attach_factory(value)
+      else
+        options[key] = value
+      end
+    end
+  end
 
   lsp[server].setup(options)
 end

@@ -47,7 +47,7 @@ for scope, table in pairs(options) do
   end
 end
 
-vim.cmd "colorscheme tokyonight-night"
+vim.cmd "colorscheme onedark"
 
 vim.api.nvim_create_autocmd("TermOpen", {
   pattern = "*", -- disable spellchecking in the embeded terminal

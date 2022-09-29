@@ -46,6 +46,7 @@ return packer.startup(function(use)
   use 'rktjmp/lush.nvim'
   use 'sainnhe/sonokai'
   use 'folke/tokyonight.nvim'
+  use 'navarasu/onedark.nvim'
   --
 
   use 'kyazdani42/nvim-web-devicons'
