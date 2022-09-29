@@ -6,6 +6,11 @@ local plugins = {
   'bufferline',
   'neo-tree',
   'mason',
+  'spellsitter',
+  'nvim-surround',
+  'nvim-autopairs',
+  'Comment',
+  'exrc'
 }
 
 local setup_default_or_raise = function (plug_name)

@@ -17,7 +17,7 @@ end
 return packer.startup(function(use)
   use 'wbthomason/packer.nvim'
 
-  use { 'lewis6991/spellsitter.nvim', config = basic_setup('spellsitter') }
+  use { 'lewis6991/spellsitter.nvim' }
   use {
     'nvim-treesitter/nvim-treesitter',
     run = ':TSUpdate'
@@ -56,22 +56,18 @@ return packer.startup(function(use)
     branch = "v2.x",
     requires = {
       "nvim-lua/plenary.nvim",
-      "kyazdani42/nvim-web-devicons", -- not strictly required, but recommended
+      "kyazdani42/nvim-web-devicons",
       "MunifTanjim/nui.nvim",
     }
   }
-  use { 'kylechui/nvim-surround', config = basic_setup('nvim-surround') }
-  use {
-    'windwp/nvim-autopairs',
-    config = basic_setup('nvim-autopairs')
-  }
-  use {
-    'numToStr/Comment.nvim',
-    config = basic_setup('Comment')
-  }
+  use 'kylechui/nvim-surround'
+  use 'windwp/nvim-autopairs'
+
+  use 'numToStr/Comment.nvim'
+
   use 'akinsho/bufferline.nvim'
   use 'gpanders/editorconfig.nvim'
   use 'lewis6991/impatient.nvim'
   use 'lewis6991/gitsigns.nvim'
-  use { 'MunifTanjim/exrc.nvim', config = basic_setup('exrc') }
+  use 'MunifTanjim/exrc.nvim'
 end)

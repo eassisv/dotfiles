@@ -82,6 +82,12 @@ require('mason-lspconfig').setup_handlers({
   setup_server
 })
 
+local non_mason_servers = { 'flow' }
+
+for _, server in ipairs(non_mason_servers) do
+  setup_server(server)
+end
+
 M.setup_server = setup_server
 
 return M
