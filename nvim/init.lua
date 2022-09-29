@@ -5,9 +5,11 @@ if not ok then
 end
 
 require('packer-conf')
-require('options')
-require('plugins')
-require('lsp')
-require('autocompletion')
-require('mappings')
+
+require('core.options')
+require('core.mappings')
+require('core.autocompletion')
+
+require('configs.plugins')
+require('configs.lsp')
 

@@ -17,21 +17,18 @@ end
 return packer.startup(function(use)
   use 'wbthomason/packer.nvim'
 
-
   use { 'lewis6991/spellsitter.nvim', config = basic_setup('spellsitter') }
   use {
     'nvim-treesitter/nvim-treesitter',
     run = ':TSUpdate'
   }
 
-  -- lsp
   use 'neovim/nvim-lspconfig'
   use 'williamboman/mason.nvim'
   use 'williamboman/mason-lspconfig.nvim'
   use 'onsails/lspkind.nvim' -- Lsp UI
   use 'glepnir/lspsaga.nvim' -- Lsp UI
 
-  -- autocompletion
   use 'hrsh7th/cmp-nvim-lsp'
   use 'hrsh7th/cmp-buffer'
   use 'hrsh7th/cmp-path'
@@ -44,25 +41,16 @@ return packer.startup(function(use)
   use 'nvim-lua/plenary.nvim'
   use 'nvim-telescope/telescope.nvim'
 
-  use 'jghauser/mkdir.nvim'
 
   -- ui
-  use 'PyGamer0/darc.nvim'
-  use 'fenetikm/falcon'
-  use 'jacoborus/tender.vim'
-  use 'bluz71/vim-moonfly-colors'
-  use 'adisen99/codeschool.nvim'
-  use 'ellisonleao/gruvbox.nvim'
-  use 'mhartington/oceanic-next'
-  use 'marko-cerovac/material.nvim'
   use 'rktjmp/lush.nvim'
-
+  use 'sainnhe/sonokai'
+  use 'folke/tokyonight.nvim'
   --
 
   use 'kyazdani42/nvim-web-devicons'
 
-  use 'nvim-lualine/lualine.nvim'
-  use { 'akinsho/bufferline.nvim', config = basic_setup('bufferline') }
+  use { 'nvim-lualine/lualine.nvim', tag = "v2.*" }
   use {
     "nvim-neo-tree/neo-tree.nvim",
     branch = "v2.x",
@@ -72,7 +60,6 @@ return packer.startup(function(use)
       "MunifTanjim/nui.nvim",
     }
   }
-  -- use 'tpope/vim-surround'
   use { 'kylechui/nvim-surround', config = basic_setup('nvim-surround') }
   use {
     'windwp/nvim-autopairs',
@@ -82,7 +69,7 @@ return packer.startup(function(use)
     'numToStr/Comment.nvim',
     config = basic_setup('Comment')
   }
-  use 'romgrk/barbar.nvim'
+  use 'akinsho/bufferline.nvim'
   use 'gpanders/editorconfig.nvim'
   use 'lewis6991/impatient.nvim'
   use 'lewis6991/gitsigns.nvim'

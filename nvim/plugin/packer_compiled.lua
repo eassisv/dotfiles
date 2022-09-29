@@ -84,11 +84,6 @@ _G.packer_plugins = {
     path = "/home/everton/.local/share/nvim/site/pack/packer/start/SchemaStore.nvim",
     url = "https://github.com/b0o/SchemaStore.nvim"
   },
-  ["barbar.nvim"] = {
-    loaded = true,
-    path = "/home/everton/.local/share/nvim/site/pack/packer/start/barbar.nvim",
-    url = "https://github.com/romgrk/barbar.nvim"
-  },
   ["bufferline.nvim"] = {
     loaded = true,
     path = "/home/everton/.local/share/nvim/site/pack/packer/start/bufferline.nvim",
@@ -119,16 +114,6 @@ _G.packer_plugins = {
     path = "/home/everton/.local/share/nvim/site/pack/packer/start/cmp-vsnip",
     url = "https://github.com/hrsh7th/cmp-vsnip"
   },
-  ["codeschool.nvim"] = {
-    loaded = true,
-    path = "/home/everton/.local/share/nvim/site/pack/packer/start/codeschool.nvim",
-    url = "https://github.com/adisen99/codeschool.nvim"
-  },
-  ["darc.nvim"] = {
-    loaded = true,
-    path = "/home/everton/.local/share/nvim/site/pack/packer/start/darc.nvim",
-    url = "https://github.com/PyGamer0/darc.nvim"
-  },
   ["editorconfig.nvim"] = {
     loaded = true,
     path = "/home/everton/.local/share/nvim/site/pack/packer/start/editorconfig.nvim",
@@ -139,20 +124,10 @@ _G.packer_plugins = {
     path = "/home/everton/.local/share/nvim/site/pack/packer/start/exrc.nvim",
     url = "https://github.com/MunifTanjim/exrc.nvim"
   },
-  falcon = {
-    loaded = true,
-    path = "/home/everton/.local/share/nvim/site/pack/packer/start/falcon",
-    url = "https://github.com/fenetikm/falcon"
-  },
   ["gitsigns.nvim"] = {
     loaded = true,
     path = "/home/everton/.local/share/nvim/site/pack/packer/start/gitsigns.nvim",
     url = "https://github.com/lewis6991/gitsigns.nvim"
-  },
-  ["gruvbox.nvim"] = {
-    loaded = true,
-    path = "/home/everton/.local/share/nvim/site/pack/packer/start/gruvbox.nvim",
-    url = "https://github.com/ellisonleao/gruvbox.nvim"
   },
   ["impatient.nvim"] = {
     loaded = true,
@@ -188,16 +163,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/everton/.local/share/nvim/site/pack/packer/start/mason.nvim",
     url = "https://github.com/williamboman/mason.nvim"
-  },
-  ["material.nvim"] = {
-    loaded = true,
-    path = "/home/everton/.local/share/nvim/site/pack/packer/start/material.nvim",
-    url = "https://github.com/marko-cerovac/material.nvim"
-  },
-  ["mkdir.nvim"] = {
-    loaded = true,
-    path = "/home/everton/.local/share/nvim/site/pack/packer/start/mkdir.nvim",
-    url = "https://github.com/jghauser/mkdir.nvim"
   },
   ["neo-tree.nvim"] = {
     loaded = true,
@@ -239,11 +204,6 @@ _G.packer_plugins = {
     path = "/home/everton/.local/share/nvim/site/pack/packer/start/nvim-web-devicons",
     url = "https://github.com/kyazdani42/nvim-web-devicons"
   },
-  ["oceanic-next"] = {
-    loaded = true,
-    path = "/home/everton/.local/share/nvim/site/pack/packer/start/oceanic-next",
-    url = "https://github.com/mhartington/oceanic-next"
-  },
   ["packer.nvim"] = {
     loaded = true,
     path = "/home/everton/.local/share/nvim/site/pack/packer/start/packer.nvim",
@@ -253,6 +213,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/everton/.local/share/nvim/site/pack/packer/start/plenary.nvim",
     url = "https://github.com/nvim-lua/plenary.nvim"
+  },
+  sonokai = {
+    loaded = true,
+    path = "/home/everton/.local/share/nvim/site/pack/packer/start/sonokai",
+    url = "https://github.com/sainnhe/sonokai"
   },
   ["spellsitter.nvim"] = {
     loaded = true,
@@ -264,15 +229,10 @@ _G.packer_plugins = {
     path = "/home/everton/.local/share/nvim/site/pack/packer/start/telescope.nvim",
     url = "https://github.com/nvim-telescope/telescope.nvim"
   },
-  ["tender.vim"] = {
+  ["tokyonight.nvim"] = {
     loaded = true,
-    path = "/home/everton/.local/share/nvim/site/pack/packer/start/tender.vim",
-    url = "https://github.com/jacoborus/tender.vim"
-  },
-  ["vim-moonfly-colors"] = {
-    loaded = true,
-    path = "/home/everton/.local/share/nvim/site/pack/packer/start/vim-moonfly-colors",
-    url = "https://github.com/bluz71/vim-moonfly-colors"
+    path = "/home/everton/.local/share/nvim/site/pack/packer/start/tokyonight.nvim",
+    url = "https://github.com/folke/tokyonight.nvim"
   },
   ["vim-vsnip"] = {
     loaded = true,
