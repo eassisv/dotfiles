@@ -2,7 +2,7 @@ local plugins = {
   'telescope',
   'nvim-treesitter',
   'gitsigns',
-  'statusline',
+  'lualine',
   'bufferline',
   'neo-tree',
   'mason',

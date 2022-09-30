@@ -38,6 +38,9 @@ local options = {
     mapleader = ",",
     sonokai_style = "shusia",
     sonokai_better_performance = 1,
+    onedark_config = {
+      style = 'warmer'
+    }
   }
 }
 
@@ -47,7 +50,10 @@ for scope, table in pairs(options) do
   end
 end
 
-vim.cmd "colorscheme onedark"
+local colors_ok, _ = pcall(vim.cmd, "colorscheme onedark")
+if not colors_ok then
+  vim.api.nvim_err_writeln('Error to load colorscheme\nConsider run :PackerSync')
+end
 
 vim.api.nvim_create_autocmd("TermOpen", {
   pattern = "*", -- disable spellchecking in the embeded terminal

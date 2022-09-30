@@ -27,7 +27,6 @@ return packer.startup(function(use)
   use 'williamboman/mason.nvim'
   use 'williamboman/mason-lspconfig.nvim'
   use 'onsails/lspkind.nvim' -- Lsp UI
-  use 'glepnir/lspsaga.nvim' -- Lsp UI
 
   use 'hrsh7th/cmp-nvim-lsp'
   use 'hrsh7th/cmp-buffer'
@@ -40,7 +39,6 @@ return packer.startup(function(use)
 
   use 'nvim-lua/plenary.nvim'
   use 'nvim-telescope/telescope.nvim'
-
 
   -- ui
   use 'rktjmp/lush.nvim'
