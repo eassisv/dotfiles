@@ -5,15 +5,6 @@ if not ok then
   return
 end
 
-local basic_setup = function(mod)
-  local okk, m = pcall(require, mod)
-  if not okk then
-    print('Failed to require package ' .. mod)
-  else
-    m.setup()
-  end
-end
-
 return packer.startup(function(use)
   use 'wbthomason/packer.nvim'
 
@@ -26,6 +17,7 @@ return packer.startup(function(use)
   use 'neovim/nvim-lspconfig'
   use 'williamboman/mason.nvim'
   use 'williamboman/mason-lspconfig.nvim'
+  use 'folke/trouble.nvim'
   use 'onsails/lspkind.nvim' -- Lsp UI
 
   use 'hrsh7th/cmp-nvim-lsp'

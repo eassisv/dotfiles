@@ -33,7 +33,6 @@ vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.s
 local opts = { noremap = true, silent = true }
 nmap('[d', vim.diagnostic.goto_prev, opts)
 nmap(']d', vim.diagnostic.goto_next, opts)
-nmap('<leader>q', vim.diagnostic.setloclist, opts)
 
 local on_attach = function(_, bufnr)
   vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')

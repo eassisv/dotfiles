@@ -11,8 +11,11 @@ local plugins = {
   'nvim-autopairs',
   'Comment',
   'exrc',
-  'onedark'
+  'onedark',
+  'trouble'
 }
+
+local s
 
 local setup_default_or_raise = function (plug_name)
   local ok, plugin = pcall(require, plug_name)

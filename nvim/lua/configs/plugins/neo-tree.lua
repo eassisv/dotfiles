@@ -16,7 +16,7 @@ require('neo-tree').setup({
   }
 })
 
-vim.keymap.set('n', '<leader>tt', ':Neotree toggle<cr>')
+require('core.utils').nmap('<leader>tt', ':Neotree toggle<cr>')
 
 vim.cmd([[
 highlight! link NeoTreeDirectoryIcon NvimTreeFolderIcon
