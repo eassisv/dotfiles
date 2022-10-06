@@ -51,6 +51,7 @@ return packer.startup(function(use)
       "MunifTanjim/nui.nvim",
     }
   }
+  use 'kyazdani42/nvim-tree.lua'
   use 'kylechui/nvim-surround'
   use 'windwp/nvim-autopairs'
 

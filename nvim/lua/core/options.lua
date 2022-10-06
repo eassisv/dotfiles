@@ -39,7 +39,8 @@ local options = {
     sonokai_style = "shusia",
     sonokai_better_performance = 1,
     onedark_config = {
-      style = 'warmer'
+      style = 'warmer',
+      transparent = true
     }
   }
 }
