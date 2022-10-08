@@ -29,6 +29,7 @@ local function install(use)
 	use("williamboman/mason.nvim")
 	use("williamboman/mason-lspconfig.nvim")
 	use("jose-elias-alvarez/null-ls.nvim")
+	use("jayp0521/mason-null-ls.nvim")
 	use("folke/trouble.nvim")
 	use("onsails/lspkind.nvim") -- Lsp UI
 
