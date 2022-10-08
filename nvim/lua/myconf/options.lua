@@ -32,10 +32,10 @@ local options = {
     undofile = true,
     updatetime = 300,
     spell = true,
-    spelllang = "en_us,pt_br",
+    spelllang = "en_us",
   },
   g = {
-    mapleader = ",",
+    mapleader = " ",
     sonokai_style = "shusia",
     sonokai_better_performance = 1,
     onedark_config = {

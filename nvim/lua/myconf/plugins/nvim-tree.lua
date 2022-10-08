@@ -13,7 +13,7 @@ require("nvim-tree").setup({
   }
 })
 
-local nmap = require('core.utils').nmap
+local nmap = require('mappings').nmap
 
 nmap('<leader>tt', '<Cmd>NvimTreeToggle<cr>')
 nmap('<leader>tf', '<Cmd>NvimTreeFindFile<cr>')

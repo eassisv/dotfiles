@@ -9,12 +9,5 @@ else
   impatient.enable_profile()
 end
 
-require('packer-conf')
-
-require('core.options')
-require('core.mappings')
-require('core.autocompletion')
-
-require('configs.plugins')
-require('configs.lsp')
+require("myconf")
 

@@ -16,8 +16,6 @@ local plugins = {
   'trouble'
 }
 
-local s
-
 local setup_default_or_raise = function (plug_name)
   local ok, plugin = pcall(require, plug_name)
   if ok then
@@ -33,7 +31,7 @@ local setup_default_or_raise = function (plug_name)
 end
 
 for _, plugin in ipairs(plugins) do
-  local ok, _ = pcall(require, 'configs.plugins.' .. plugin)
+  local ok, _ = pcall(require, 'plugins.' .. plugin)
   if not ok then
     setup_default_or_raise(plugin)
   end

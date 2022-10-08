@@ -1,5 +1,5 @@
 local M = {}
-local nmap = require('core.utils').nmap
+local nmap = require('myconf.mappings').nmap
 
 local signs = {
   { name = "DiagnosticSignError", text = " " },
@@ -69,7 +69,7 @@ local lsp = require('lspconfig')
 
 local setup_server = function(server)
   local options = {}
-  local ok, server_options = pcall(require, 'configs.lsp.servers.' .. server)
+  local ok, server_options = pcall(require, 'lsp.servers.' .. server)
 
   options.capabilities = capabilities
   options.on_attach = on_attach
