@@ -32,7 +32,7 @@ local options = {
     undofile = true,
     updatetime = 300,
     spell = true,
-    spelllang = "en_us",
+    spelllang = "en_us,pt_br",
   },
   g = {
     mapleader = " ",
@@ -51,7 +51,7 @@ for scope, table in pairs(options) do
   end
 end
 
-local colors_ok, _ = pcall(vim.cmd, "colorscheme onedark")
+local colors_ok, _ = pcall(vim.cmd, "colorscheme tokyonight-night")
 if not colors_ok then
   vim.api.nvim_err_writeln('Error to load colorscheme\nConsider run :PackerSync')
 end

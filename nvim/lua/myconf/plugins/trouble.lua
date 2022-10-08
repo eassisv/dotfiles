@@ -8,7 +8,7 @@ require('trouble').setup({
   use_diagnostic_signs = true
 })
 
-local nmap = require('mappings').nmap
+local nmap = require('myconf.mappings').nmap
 
 nmap('<leader>qw', '<cmd>TroubleToggle<cr>')
 nmap('<leader>qq', '<cmd>TroubleToggle document_diagnostics<cr>')

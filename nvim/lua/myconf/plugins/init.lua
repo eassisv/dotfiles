@@ -4,10 +4,8 @@ local plugins = {
   'gitsigns',
   'lualine',
   'bufferline',
-  -- 'neo-tree',
   'nvim-tree',
   'mason',
-  'spellsitter',
   'nvim-surround',
   'nvim-autopairs',
   'Comment',
@@ -31,7 +29,7 @@ local setup_default_or_raise = function (plug_name)
 end
 
 for _, plugin in ipairs(plugins) do
-  local ok, _ = pcall(require, 'plugins.' .. plugin)
+  local ok, _ = pcall(require, 'myconf.plugins.' .. plugin)
   if not ok then
     setup_default_or_raise(plugin)
   end

@@ -1,5 +1,5 @@
 require("nvim-tree").setup({
-  disable_netrw = true,
+  open_on_setup = true,
   renderer = {
     indent_markers = {
       enable = true
@@ -13,7 +13,7 @@ require("nvim-tree").setup({
   }
 })
 
-local nmap = require('mappings').nmap
+local nmap = require('myconf.mappings').nmap
 
 nmap('<leader>tt', '<Cmd>NvimTreeToggle<cr>')
 nmap('<leader>tf', '<Cmd>NvimTreeFindFile<cr>')

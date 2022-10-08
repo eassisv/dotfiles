@@ -69,7 +69,7 @@ local lsp = require('lspconfig')
 
 local setup_server = function(server)
   local options = {}
-  local ok, server_options = pcall(require, 'lsp.servers.' .. server)
+  local ok, server_options = pcall(require, 'myconf.lsp.servers.' .. server)
 
   options.capabilities = capabilities
   options.on_attach = on_attach
