@@ -1,4 +1,5 @@
 local plugins = {
+  "cmp",
 	"telescope",
 	"nvim-treesitter",
 	"gitsigns",
@@ -12,6 +13,7 @@ local plugins = {
 	"Comment",
 	"exrc",
 	"onedark",
+	"tokyonight",
 	"trouble",
 }
 
