@@ -1,6 +1,5 @@
 local M = {}
 local nmap = require('myconf.mappings').nmap
-
 local signs = {
   { name = "DiagnosticSignError", text = " " },
   { name = "DiagnosticSignWarn", text = " " },
@@ -16,6 +15,7 @@ vim.diagnostic.config({
   underline = true,
   virtual_text = true,
   severity_sort = true,
+  update_in_insert = true,
   signs = { active = signs },
   float = {
     focused = false,
@@ -30,9 +30,9 @@ vim.diagnostic.config({
 vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded" })
 vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = "rounded" })
 
-local opts = { noremap = true, silent = true }
-nmap('[d', vim.diagnostic.goto_prev, opts)
-nmap(']d', vim.diagnostic.goto_next, opts)
+nmap('<leader>e', vim.diagnostic.open_float)
+nmap('[d', vim.diagnostic.goto_prev)
+nmap(']d', vim.diagnostic.goto_next)
 
 local on_attach = function(_, bufnr)
   vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
@@ -42,13 +42,15 @@ local on_attach = function(_, bufnr)
   nmap('gd', vim.lsp.buf.definition, bufopts)
   nmap('K', vim.lsp.buf.hover, bufopts)
   nmap('gi', vim.lsp.buf.implementation, bufopts)
+  nmap('<leader>s', vim.lsp.buf.signature_help, bufopts)
   nmap('<leader>D', vim.lsp.buf.type_definition, bufopts)
   nmap('<leader>rn', vim.lsp.buf.rename, bufopts)
+  nmap('<leader>ca', vim.lsp.buf.code_action, bufopts)
   nmap('gr', vim.lsp.buf.references, bufopts)
-  nmap('<leader>fd', vim.lsp.buf.formatting, bufopts)
+  nmap('<leader>fd', function() vim.lsp.buf.format({ async = true }) end, bufopts)
 end
 
-local on_attach_factory = function (cb)
+local function on_attach_factory(cb)
   return function(client, bufnr)
     cb(client, bufnr)
     on_attach(client, bufnr)
