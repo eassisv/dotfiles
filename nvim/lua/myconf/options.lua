@@ -36,12 +36,6 @@ local options = {
   },
   g = {
     mapleader = " ",
-    sonokai_style = "shusia",
-    sonokai_better_performance = 1,
-    onedark_config = {
-      style = "warmer",
-      transparent = true,
-    },
   },
 }
 
@@ -49,11 +43,6 @@ for scope, table in pairs(options) do
   for setting, value in pairs(table) do
     vim[scope][setting] = value
   end
-end
-
-local colors_ok, _ = pcall(vim.cmd, "colorscheme tokyonight-night")
-if not colors_ok then
-  vim.api.nvim_err_writeln("Error to load colorscheme\nConsider run :PackerSync")
 end
 
 vim.api.nvim_create_autocmd("TermOpen", {

@@ -1,20 +1,20 @@
 local plugins = {
-  "cmp",
+	"onedark",
+	"tokyonight",
 	"telescope",
 	"nvim-treesitter",
 	"gitsigns",
-	"lualine",
 	"bufferline",
 	"nvim-tree",
+	"trouble",
+	"lualine",
+  "cmp",
 	"mason",
 	"null-ls",
 	"nvim-surround",
 	"nvim-autopairs",
 	"Comment",
 	"exrc",
-	"onedark",
-	"tokyonight",
-	"trouble",
 }
 
 local setup_default_or_raise = function(plug_name)
@@ -34,3 +34,5 @@ for _, plugin in ipairs(plugins) do
 		setup_default_or_raise(plugin)
 	end
 end
+
+vim.cmd("colorscheme tokyonight")
