@@ -10,7 +10,7 @@ require('bufferline').setup {
   },
 }
 
-local nmap = require('mappings').nmap
+local nmap = require('myconf.mappings').nmap
 
 -- Move to previous/next
 nmap('[t', '<Cmd>BufferLineCyclePrev<CR>')

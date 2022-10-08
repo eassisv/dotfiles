@@ -42,6 +42,7 @@ local function install(use)
 
   use 'nvim-lua/plenary.nvim'
   use 'nvim-telescope/telescope.nvim'
+  use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
 
   -- ui
   use 'rktjmp/lush.nvim'
