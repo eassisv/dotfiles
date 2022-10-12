@@ -52,6 +52,7 @@ local function install(use)
 	use("sainnhe/sonokai")
 	use("folke/tokyonight.nvim")
 	use("navarasu/onedark.nvim")
+	use("marko-cerovac/material.nvim")
 	--
 
 	use("kyazdani42/nvim-web-devicons")

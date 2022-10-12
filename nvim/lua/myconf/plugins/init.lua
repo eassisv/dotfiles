@@ -35,4 +35,5 @@ for _, plugin in ipairs(plugins) do
 	end
 end
 
-vim.cmd("colorscheme tokyonight")
+vim.g.material_style = "darker"
+vim.cmd("colorscheme material")

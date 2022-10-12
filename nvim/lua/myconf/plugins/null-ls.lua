@@ -1,6 +1,5 @@
 local null_ls = require("null-ls")
 local mason_null_ls = require("mason-null-ls")
-local builtins = null_ls.builtins
 
 mason_null_ls.setup({
   ensure_installed = {
@@ -8,18 +7,19 @@ mason_null_ls.setup({
   },
 })
 
+local sources = {}
+
 mason_null_ls.setup_handlers({
   function(source)
-    for _, builtin in ipairs({ "diagnostics", "formatting", "code_actions", "completion", "hover" }) do
-      if vim.tbl_contains(vim.tbl_keys(builtins[builtin]), source) then
-        null_ls.setup(builtins[builtin][source])
+    for _, type in ipairs({ "diagnostics", "formatting", "code_actions", "completion", "hover" }) do
+      local builtin_ok, builtin = pcall(require, "null-ls.builtins." .. type .. "." .. source)
+      if builtin_ok then
+        table.insert(sources, builtin)
       end
     end
   end,
 })
 
 null_ls.setup({
-  sources = {
-    builtins.formatting.stylua,
-  },
+  sources = sources,
 })
