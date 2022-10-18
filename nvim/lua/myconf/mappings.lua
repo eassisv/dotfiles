@@ -22,7 +22,9 @@ local n = {
   ["c"] = '"0c',
   ["s"] = '"0s',
 
-  ["<leader>ot"] = ":15split +term<cr>"
+  ["<leader>ot"] = ":15split +term<cr>",
+
+  ["<leader><leader>s"] = ":so %<cr>"
 }
 
 local v = {

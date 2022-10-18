@@ -33,6 +33,7 @@ local function install(use)
 	use("b0o/SchemaStore.nvim")
 	use("folke/trouble.nvim")
 	use("onsails/lspkind.nvim") -- Lsp UI
+	use("ray-x/lsp_signature.nvim")
 
   use("L3MON4D3/LuaSnip")
   use("saadparwaiz1/cmp_luasnip")
@@ -53,6 +54,7 @@ local function install(use)
 	use("folke/tokyonight.nvim")
 	use("navarasu/onedark.nvim")
 	use("marko-cerovac/material.nvim")
+	use("bluz71/vim-moonfly-colors")
 	--
 
 	use("kyazdani42/nvim-web-devicons")
