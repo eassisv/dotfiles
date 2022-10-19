@@ -37,4 +37,8 @@ for _, plugin in ipairs(plugins) do
 end
 
 vim.g.material_style = "darker"
-vim.cmd("colorscheme moonfly")
+vim.g.sonokai_style = "shusia"
+vim.g.sonokai_transparent_background = 2
+vim.g.moonflyTransparent = true
+
+vim.cmd("colorscheme tokyonight")
