@@ -35,7 +35,7 @@ local options = {
     spelllang = "en_us,pt_br",
   },
   g = {
-    mapleader = " ",
+    mapleader = ",",
   },
 }
 
