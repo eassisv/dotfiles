@@ -51,10 +51,10 @@ local function install(use)
 	-- ui
 	use("rktjmp/lush.nvim")
 	use("sainnhe/sonokai")
+	use("sainnhe/gruvbox-material")
 	use("folke/tokyonight.nvim")
-	use("navarasu/onedark.nvim")
-	use("marko-cerovac/material.nvim")
-	use("bluz71/vim-moonfly-colors")
+	use("shaunsingh/solarized.nvim")
+	use("fenetikm/falcon")
 	--
 
 	use("kyazdani42/nvim-web-devicons")
@@ -72,6 +72,7 @@ local function install(use)
 	use("lewis6991/gitsigns.nvim")
 	use("MunifTanjim/exrc.nvim")
 	use("stevearc/dressing.nvim")
+	use("akinsho/toggleterm.nvim")
 end
 
 return packer.startup({

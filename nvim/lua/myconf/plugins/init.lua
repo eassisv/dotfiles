@@ -1,5 +1,4 @@
 local plugins = {
-  "onedark",
   "tokyonight",
   "telescope",
   "nvim-treesitter",
@@ -16,6 +15,7 @@ local plugins = {
   "nvim-autopairs",
   "Comment",
   "exrc",
+  "toggleterm"
 }
 
 local setup_default_or_raise = function(plug_name)
@@ -36,9 +36,10 @@ for _, plugin in ipairs(plugins) do
   end
 end
 
-vim.g.material_style = "darker"
 vim.g.sonokai_style = "shusia"
 vim.g.sonokai_transparent_background = 2
-vim.g.moonflyTransparent = true
+vim.g.gruvbox_material_background = 'hard'
+vim.g.gruvbox_material_better_performance = 1
+vim.g.gruvbox_material_transparent_background = 2
 
-vim.cmd("colorscheme tokyonight")
+vim.cmd("colorscheme gruvbox-material")

@@ -14,6 +14,6 @@ require("nvim-tree").setup({
 
 local nmap = require("myconf.mappings").nmap
 
-nmap("<leader>tt", "<Cmd>NvimTreeToggle<cr>")
+nmap("<leader>te", "<Cmd>NvimTreeToggle<cr>")
 nmap("<leader>tf", "<Cmd>NvimTreeFindFile<cr>")
 nmap("<leader>tr", "<Cmd>NvimTreeRefresh<cr>")
