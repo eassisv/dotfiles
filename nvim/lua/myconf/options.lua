@@ -3,7 +3,7 @@ local options = {
     backspace = vim.opt.backspace + { "nostop" },
     whichwrap = vim.opt.whichwrap + "<,>,h,l,[,]",
     clipboard = "unnamedplus",
-    completeopt = { "menu", "menuone", "noselect" },
+    completeopt = { "menuone", "noselect" },
     copyindent = true,
     cursorline = true,
     expandtab = true,
@@ -33,6 +33,8 @@ local options = {
     updatetime = 300,
     spell = true,
     spelllang = "en_us,pt_br",
+    hlsearch = false,
+    incsearch = true
   },
   g = {
     mapleader = ",",

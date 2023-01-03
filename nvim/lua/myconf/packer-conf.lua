@@ -31,6 +31,7 @@ local function install(use)
   use("folke/trouble.nvim")
   use("onsails/lspkind.nvim") -- Lsp UI
   use("ray-x/lsp_signature.nvim")
+  use("j-hui/fidget.nvim")
 
   use("L3MON4D3/LuaSnip")
   use("saadparwaiz1/cmp_luasnip")
@@ -52,6 +53,7 @@ local function install(use)
   use("folke/tokyonight.nvim")
   use("catppuccin/nvim")
   use("sainnhe/edge")
+  use("rose-pine/neovim")
   --
 
   use("kyazdani42/nvim-web-devicons")
