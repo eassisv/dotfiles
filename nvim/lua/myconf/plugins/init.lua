@@ -17,7 +17,8 @@ local plugins = {
   "Comment",
   "exrc",
   "toggleterm",
-  "fidget"
+  "fidget",
+  "rose-pine",
 }
 
 local setup_default_or_raise = function(plug_name)
@@ -48,8 +49,3 @@ vim.g.edge_better_performance = 1
 vim.g.edge_transparent_background = 2
 
 vim.cmd("colorscheme rose-pine")
-
-vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
-vim.api.nvim_set_hl(0, "NormalNC", { bg = "none" })
-vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
-vim.api.nvim_set_hl(0, "SignColumn", { bg = "none" })
