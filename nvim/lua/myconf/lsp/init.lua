@@ -52,13 +52,6 @@ local on_attach = function(_, bufnr)
   end, bufopts)
 end
 
-local function on_attach_factory(cb)
-  return function(client, bufnr)
-    cb(client, bufnr)
-    on_attach(client, bufnr)
-  end
-end
-
 local flags = {
   debounce_text_changes = 150,
 }
@@ -77,11 +70,7 @@ local setup_server = function(server)
 
   if ok then
     for key, value in pairs(server_options) do
-      if key == "on_attach" then
-        options.on_attach = on_attach_factory(value)
-      else
-        options[key] = value
-      end
+      options[key] = value
     end
   end
 
@@ -91,8 +80,6 @@ end
 require("mason-lspconfig").setup_handlers({
   setup_server,
 })
-
-local non_mason_servers = { "flow" }
 
 for _, server in ipairs(non_mason_servers) do
   setup_server(server)
