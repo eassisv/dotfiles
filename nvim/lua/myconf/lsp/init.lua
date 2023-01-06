@@ -81,10 +81,6 @@ require("mason-lspconfig").setup_handlers({
   setup_server,
 })
 
-for _, server in ipairs(non_mason_servers) do
-  setup_server(server)
-end
-
 M.setup_server = setup_server
 
 local client_to_disable = {}

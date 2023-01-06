@@ -23,6 +23,7 @@ local n = {
 
   ["<leader><leader>s"] = ":so %<cr>",
   ["<leader>te"] = ":Explore<cr>",
+  ["<leader>gs"] = ":Git<cr>"
 }
 
 local v = {
