@@ -37,7 +37,7 @@ local options = {
     incsearch = true
   },
   g = {
-    mapleader = ",",
+    mapleader = " ",
   },
 }
 
