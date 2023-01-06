@@ -1,3 +1,5 @@
+require("myconf.packer-conf")
+
 local plugins = {
   "tokyonight",
   "catppuccin",
@@ -27,7 +29,7 @@ local setup_default_or_raise = function(plug_name)
     plugin.setup()
   else
     vim.api.nvim_err_writeln(
-      "Failed to setup module " .. plugin .. "\n" .. "Consider run :PackerSync or check for any typo"
+      "Failed to setup module " .. plug_name .. ": " .. "Consider run :PackerSync"
     )
   end
 end
@@ -39,13 +41,3 @@ for _, plugin in ipairs(plugins) do
   end
 end
 
-vim.g.sonokai_style = "shusia"
-vim.g.sonokai_transparent_background = 2
-vim.g.gruvbox_material_background = "hard"
-vim.g.gruvbox_material_better_performance = 1
-vim.g.gruvbox_material_transparent_background = 2
-vim.g.edge_style = "neon"
-vim.g.edge_better_performance = 1
-vim.g.edge_transparent_background = 2
-
-vim.cmd("colorscheme rose-pine")

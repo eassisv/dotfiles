@@ -1,21 +1,15 @@
-local ok, packer = pcall(require, "packer")
-
-if not ok then
-  print("Packer is not installed")
-  return
+local ensure_packer = function()
+  local fn = vim.fn
+  local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
+  if fn.empty(fn.glob(install_path)) > 0 then
+    fn.system({ 'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path })
+    vim.cmd [[packadd packer.nvim]]
+    return true
+  end
+  return false
 end
 
-local config = {
-  display = {
-    open_fn = function()
-      return require("packer.util").float({ border = "rounded" })
-    end,
-    prompt_border = "rounded",
-    keybindings = {
-      quit = "<Esc>",
-    },
-  },
-}
+local packer_bootstrap = ensure_packer()
 
 local function install(use)
   use("wbthomason/packer.nvim")
@@ -72,9 +66,24 @@ local function install(use)
   use("MunifTanjim/exrc.nvim")
   use("stevearc/dressing.nvim")
   use("akinsho/toggleterm.nvim")
+
+  if packer_bootstrap then
+    require("packer").sync()
+  end
 end
 
-return packer.startup({
+return require("packer").startup({
   install,
-  config = config,
+  config = {
+    display = {
+      open_fn = function()
+        return require("packer.util").float({ border = "rounded" })
+      end,
+      -- prompt_border = "rounded",
+      keybindings = {
+        quit = "<Esc>",
+      },
+    },
+  }
+  ,
 })
