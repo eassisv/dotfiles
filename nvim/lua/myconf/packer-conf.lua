@@ -28,7 +28,6 @@ local function install(use)
   use("j-hui/fidget.nvim")
 
   use("L3MON4D3/LuaSnip")
-  use("saadparwaiz1/cmp_luasnip")
   use("rafamadriz/friendly-snippets")
   use("hrsh7th/cmp-nvim-lsp")
   use("hrsh7th/cmp-buffer")
@@ -42,30 +41,27 @@ local function install(use)
 
   -- ui
   use("rktjmp/lush.nvim")
-  use("sainnhe/sonokai")
   use("sainnhe/gruvbox-material")
   use("folke/tokyonight.nvim")
-  use("catppuccin/nvim")
-  use("sainnhe/edge")
   use("rose-pine/neovim")
   --
 
   use("kyazdani42/nvim-web-devicons")
 
   use("nvim-lualine/lualine.nvim")
-  use("kyazdani42/nvim-tree.lua")
   use("kylechui/nvim-surround")
   use("windwp/nvim-autopairs")
 
   use("numToStr/Comment.nvim")
 
-  use("akinsho/bufferline.nvim")
   use("gpanders/editorconfig.nvim")
   use("lewis6991/impatient.nvim")
   use("lewis6991/gitsigns.nvim")
   use("MunifTanjim/exrc.nvim")
   use("stevearc/dressing.nvim")
   use("akinsho/toggleterm.nvim")
+  use("ThePrimeagen/harpoon")
+  use("tpope/vim-fugitive")
 
   if packer_bootstrap then
     require("packer").sync()

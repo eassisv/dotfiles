@@ -19,21 +19,16 @@ local n = {
   ["<M-j>"] = "mz:m+<cr>`z",
   ["<M-k>"] = "mz:m-2<cr>`z",
 
-  ["c"] = '"0c',
-  ["s"] = '"0s',
-
   ["<leader>ot"] = ":15split +term<cr>",
 
-  ["<leader><leader>s"] = ":so %<cr>"
+  ["<leader><leader>s"] = ":so %<cr>",
+  ["<leader>te"] = ":Explore<cr>",
 }
 
 local v = {
   -- Move lines and selections
   ["<M-j>"] = ":m'>+<cr>`<my`>mzgv`yo`z",
   ["<M-k>"] = ":m'<-2<cr>`<my`>mzgv`yo`z",
-
-  ["c"] = '"0c',
-  ["s"] = '"0s',
 }
 
 local t = {
@@ -50,5 +45,14 @@ for mode, mapping in pairs(mappings) do
 end
 
 vim.cmd("tnoremap <C-[> <C-\\><C-n>")
+
+local netrw_mappings_group = vim.api.nvim_create_augroup("NetrwMappings", {})
+vim.api.nvim_create_autocmd("FileType", {
+  group = netrw_mappings_group,
+  pattern = "netrw",
+  callback = function(args)
+    M.nmap("l", "<cr>", { silent = true, remap = true, buffer = args.buf })
+  end,
+})
 
 return M

@@ -2,12 +2,9 @@ require("myconf.packer-conf")
 
 local plugins = {
   "tokyonight",
-  "catppuccin",
   "telescope",
   "nvim-treesitter",
   "gitsigns",
-  "bufferline",
-  "nvim-tree",
   "trouble",
   "lualine",
   "cmp",
@@ -21,6 +18,7 @@ local plugins = {
   "toggleterm",
   "fidget",
   "rose-pine",
+  "harpoon"
 }
 
 local setup_default_or_raise = function(plug_name)
