@@ -1,34 +1,21 @@
 local M = {}
 local nmap = require("myconf.mappings").nmap
-local signs = {
-  { name = "DiagnosticSignError", text = " " },
-  { name = "DiagnosticSignWarn", text = " " },
-  { name = "DiagnosticSignHint", text = "" },
-  { name = "DiagnosticSignInfo", text = " " },
-}
 
-for _, sign in ipairs(signs) do
-  vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = "" })
-end
+local s
 
 vim.diagnostic.config({
   underline = true,
   virtual_text = true,
   severity_sort = true,
   update_in_insert = true,
-  signs = { active = signs },
   float = {
-    focused = false,
+    border = "single",
     style = "minimal",
-    border = "rounded",
-    source = "always",
-    header = "",
-    prefix = "",
   },
 })
 
-vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded" })
-vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = "rounded" })
+vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "single" })
+vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = "single" })
 
 nmap("<leader>e", vim.diagnostic.open_float)
 nmap("[d", vim.diagnostic.goto_prev)
@@ -46,7 +33,6 @@ local on_attach = function(_, bufnr)
   nmap("<leader>D", vim.lsp.buf.type_definition, bufopts)
   nmap("<leader>rn", vim.lsp.buf.rename, bufopts)
   nmap("<leader>ca", vim.lsp.buf.code_action, bufopts)
-  -- nmap("<leader>lr", vim.lsp.buf.references, bufopts)
   nmap("<leader>fd", function()
     vim.lsp.buf.format({ async = true })
   end, bufopts)

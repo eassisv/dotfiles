@@ -1,49 +1,37 @@
-local M = {}
 local map = vim.keymap.set
 
-function M.nmap(lhs, rhs, opts)
-  map("n", lhs, rhs, opts or { silent = true, noremap = true })
-end
-
-local n = {
-  ["<leader>w"] = ":w!<cr>",
-  ["<leader>l"] = ":nohl<cr>",
-
-  -- windows change
-  ["<C-j>"] = "<C-W>j",
-  ["<C-k>"] = "<C-W>k",
-  ["<C-h>"] = "<C-W>h",
-  ["<C-l>"] = "<C-W>l",
-
-  -- move lines
-  ["<M-j>"] = "mz:m+<cr>`z",
-  ["<M-k>"] = "mz:m-2<cr>`z",
-
-  ["<leader>ot"] = ":15split +term<cr>",
-
-  ["<leader><leader>s"] = ":so %<cr>",
-  ["<leader>te"] = ":Explore<cr>",
-  ["<leader>gs"] = ":Git<cr>"
-}
-
-local v = {
-  -- Move lines and selections
-  ["<M-j>"] = ":m'>+<cr>`<my`>mzgv`yo`z",
-  ["<M-k>"] = ":m'<-2<cr>`<my`>mzgv`yo`z",
-}
-
-local t = {
-  ["<C-[>"] = "<C-\\><C-n>",
-  ["<Esc>"] = "<C-\\><C-n>",
-}
-
-local mappings = { n = n, v = v, t = t }
-
-for mode, mapping in pairs(mappings) do
-  for lhs, rhs in pairs(mapping) do
-    vim.keymap.set(mode, lhs, rhs, { remap = false, silent = true })
+local function _map(mode)
+  return function(lhs, rhs, opts)
+    map(mode, lhs, rhs, opts)
   end
 end
+
+local nmap = _map("n")
+local vmap = _map("v")
+
+nmap("<leader>w", ":w!<cr>")
+nmap("<leader>l", ":nohl<cr>")
+nmap(",,s", ":so %<cr>", { silent = false })
+
+-- windows change
+nmap("<C-j>", "<C-W>j")
+nmap("<C-k>", "<C-W>k")
+nmap("<C-h>", "<C-W>h")
+nmap("<C-l>", "<C-W>l")
+
+-- move lines
+nmap("<M-j>", "mz:m+<cr>`z")
+nmap("<M-k>", "mz:m-2<cr>`z")
+
+nmap("<C-d>", "<C-d>zz")
+nmap("<C-u>", "<C-u>zz")
+
+nmap("<leader>te", ":Explore<cr>")
+nmap("<leader>gs", ":Git<cr>")
+
+-- Move lines and selections
+vmap("<M-j>", ":m'>+<cr>`<my`>mzgv`yo`z")
+vmap("<M-k>", ":m'<-2<cr>`<my`>mzgv`yo`z")
 
 vim.cmd("tnoremap <C-[> <C-\\><C-n>")
 
@@ -55,5 +43,10 @@ vim.api.nvim_create_autocmd("FileType", {
     M.nmap("l", "<cr>", { silent = true, remap = true, buffer = args.buf })
   end,
 })
+
+local M = {
+  nmap = nmap,
+  vmap = vmap,
+}
 
 return M

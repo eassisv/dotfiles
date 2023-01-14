@@ -1,11 +1,11 @@
-require("myconf.packer-conf")
+if require("myconf.packer-conf").packer_bootstrap then
+  return
+end
 
 local plugins = {
-  "tokyonight",
   "telescope",
   "nvim-treesitter",
   "gitsigns",
-  "trouble",
   "lualine",
   "cmp",
   "mason",
@@ -15,10 +15,9 @@ local plugins = {
   "nvim-autopairs",
   "Comment",
   "exrc",
-  "toggleterm",
   "fidget",
   "rose-pine",
-  "harpoon"
+  "harpoon",
 }
 
 local setup_default_or_raise = function(plug_name)
@@ -26,9 +25,7 @@ local setup_default_or_raise = function(plug_name)
   if ok then
     plugin.setup()
   else
-    vim.api.nvim_err_writeln(
-      "Failed to setup module " .. plug_name .. ": " .. "Consider run :PackerSync"
-    )
+    vim.api.nvim_err_writeln("Failed to setup module " .. plug_name .. ": " .. "Consider run :PackerSync")
   end
 end
 
@@ -38,4 +35,11 @@ for _, plugin in ipairs(plugins) do
     setup_default_or_raise(plugin)
   end
 end
+
+require("tokyonight").setup({
+  transparent = true,
+  styles = {
+    keywords = { italic = false },
+  },
+})
 
