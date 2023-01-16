@@ -1,6 +1,5 @@
 local cmp = require("cmp")
 local luasnip = require("luasnip")
-local lspkind = require("lspkind")
 
 require("luasnip.loaders.from_vscode").lazy_load()
 
@@ -40,9 +39,6 @@ cmp.setup({
   window = {
     completion = cmp.config.window.bordered(),
     documentation = cmp.config.window.bordered(),
-  },
-  formatting = {
-    format = lspkind.cmp_format({ mode = "text_symbol" }),
   },
   mapping = cmp.mapping.preset.insert({
     ["<C-u>"] = cmp.mapping.scroll_docs(-4),

@@ -1,7 +1,16 @@
 local M = {}
 local nmap = require("myconf.mappings").nmap
 
-local s
+require("mason").setup()
+require("mason-lspconfig").setup({
+  ensure_installed = { "sumneko_lua" },
+})
+require("mason-null-ls").setup({
+  ensure_installed = { "stylua" },
+  automatic_setup = true
+})
+
+require("lsp_signature").setup({ bind = true })
 
 vim.diagnostic.config({
   underline = true,
@@ -47,20 +56,18 @@ local capabilities = require("cmp_nvim_lsp").default_capabilities()
 local lsp = require("lspconfig")
 
 local setup_server = function(server)
-  local options = {}
+  local default_options = {
+    flags = flags,
+    on_attach = on_attach,
+    capabilities = capabilities
+  }
   local ok, server_options = pcall(require, "myconf.lsp.servers." .. server)
 
-  options.capabilities = capabilities
-  options.on_attach = on_attach
-  options.flags = flags
-
   if ok then
-    for key, value in pairs(server_options) do
-      options[key] = value
-    end
+    vim.tbl_deep_extend("force", default_options, server_options)
   end
 
-  lsp[server].setup(options)
+  lsp[server].setup(default_options)
 end
 
 require("mason-lspconfig").setup_handlers({
@@ -68,22 +75,5 @@ require("mason-lspconfig").setup_handlers({
 })
 
 M.setup_server = setup_server
-
-local client_to_disable = {}
-
-function M.disable_client(client_name)
-  table.insert(client_to_disable, client_name)
-end
-
-vim.api.nvim_create_autocmd("LspAttach", {
-  pattern = "*",
-  callback = function(args)
-    local client = vim.lsp.get_client_by_id(args.data.client_id)
-    if vim.tbl_contains(client_to_disable, client.name) then
-      vim.notify("Stopping client " .. client.name)
-      client.stop()
-    end
-  end,
-})
 
 return M
