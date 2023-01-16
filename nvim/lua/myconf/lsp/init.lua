@@ -7,10 +7,13 @@ require("mason-lspconfig").setup({
 })
 require("mason-null-ls").setup({
   ensure_installed = { "stylua" },
-  automatic_setup = true
+  automatic_setup = true,
 })
+require("null-ls").setup()
+require("mason-null-ls").setup_handlers({})
 
 require("lsp_signature").setup({ bind = true })
+require("fidget").setup({ text = { spinner = "dots" } })
 
 vim.diagnostic.config({
   underline = true,
@@ -56,18 +59,18 @@ local capabilities = require("cmp_nvim_lsp").default_capabilities()
 local lsp = require("lspconfig")
 
 local setup_server = function(server)
-  local default_options = {
+  local options = {
     flags = flags,
     on_attach = on_attach,
-    capabilities = capabilities
+    capabilities = capabilities,
   }
   local ok, server_options = pcall(require, "myconf.lsp.servers." .. server)
 
   if ok then
-    vim.tbl_deep_extend("force", default_options, server_options)
+    options = vim.tbl_deep_extend("force", options, server_options)
   end
 
-  lsp[server].setup(default_options)
+  lsp[server].setup(options)
 end
 
 require("mason-lspconfig").setup_handlers({
