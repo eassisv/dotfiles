@@ -11,7 +11,6 @@ require("mason-null-ls").setup({
 })
 require("null-ls").setup()
 require("mason-null-ls").setup_handlers({})
-
 require("lsp_signature").setup({ bind = true })
 require("fidget").setup({ text = { spinner = "dots" } })
 
@@ -20,10 +19,7 @@ vim.diagnostic.config({
   virtual_text = true,
   severity_sort = true,
   update_in_insert = true,
-  float = {
-    border = "single",
-    style = "minimal",
-  },
+  float = { border = "single", style = "minimal" },
 })
 
 vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "single" })
@@ -50,24 +46,34 @@ local on_attach = function(_, bufnr)
   end, bufopts)
 end
 
-local flags = {
-  debounce_text_changes = 150,
-}
-
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
-
 local lsp = require("lspconfig")
 
 local setup_server = function(server)
   local options = {
-    flags = flags,
+    flags = { debounce_text_changes = 150 },
     on_attach = on_attach,
     capabilities = capabilities,
   }
-  local ok, server_options = pcall(require, "myconf.lsp.servers." .. server)
 
-  if ok then
-    options = vim.tbl_deep_extend("force", options, server_options)
+  if server == "sumneko_lua" then
+    options.settings = {
+      Lua = {
+        diagnostics = {
+          globals = { "vim" },
+        },
+      },
+    }
+  end
+
+  if server == "jsonls" then
+    options.settings = {
+
+      json = {
+        schemas = require("schemastore").json.schemas(),
+        validate = { enable = true },
+      },
+    }
   end
 
   lsp[server].setup(options)

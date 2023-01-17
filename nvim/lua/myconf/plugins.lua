@@ -4,15 +4,6 @@ end
 
 local nmap = require("myconf.mappings").nmap
 
-local plugins = {
-  "cmp",
-  "lsp_signature",
-  "fidget",
-  "harpoon",
-}
-
-require("myconf.plugins.cmp")
-
 require("Comment").setup()
 require("nvim-surround").setup()
 require("nvim-autopairs").setup()
@@ -47,6 +38,29 @@ nmap("<leader>*", builtin.grep_string)
 nmap("\\", builtin.buffers)
 nmap("<leader>fht", builtin.help_tags)
 nmap("<leader>lr", builtin.lsp_references)
+
+require("harpoon").setup()
+require("telescope").load_extension("harpoon")
+
+local ui = require("harpoon.ui")
+local mark = require("harpoon.mark")
+
+nmap("<leader>a", mark.add_file)
+nmap("<leader>hf", ui.toggle_quick_menu)
+nmap("<leader>1", function()
+  ui.nav_file(1)
+end)
+nmap("<leader>2", function()
+  ui.nav_file(2)
+end)
+nmap("<leader>3", function()
+  ui.nav_file(3)
+end)
+nmap("<leader>4", function()
+  ui.nav_file(4)
+end)
+nmap("[m", ui.nav_prev)
+nmap("]m", ui.nav_next)
 
 require("gitsigns").setup({
   current_line_blame = true,

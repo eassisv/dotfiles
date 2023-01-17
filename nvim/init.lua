@@ -6,11 +6,12 @@ else
   impatient.enable_profile()
 end
 
-require("myconf.options")
 require("myconf.packer-conf")
+require("myconf.options")
+require("myconf.mappings")
 require("myconf.colors")
 require("myconf.plugins")
-require("myconf.mappings")
+require("myconf.cmp")
 require("myconf.lsp")
 
 
