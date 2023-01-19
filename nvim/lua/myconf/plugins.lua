@@ -32,12 +32,17 @@ require("telescope").setup({
 require("telescope").load_extension("fzf")
 local builtin = require("telescope.builtin")
 
+nmap("\\", builtin.buffers)
 nmap("<leader>ff", builtin.find_files)
 nmap("<leader>fg", builtin.live_grep)
 nmap("<leader>*", builtin.grep_string)
-nmap("\\", builtin.buffers)
+nmap("<leader>bff", builtin.current_buffer_fuzzy_find)
 nmap("<leader>fht", builtin.help_tags)
 nmap("<leader>lr", builtin.lsp_references)
+nmap("<leader>wq", builtin.diagnostics)
+nmap("<leader>q", function()
+  builtin.diagnostics({ bufnr = 0 })
+end)
 
 require("harpoon").setup()
 require("telescope").load_extension("harpoon")
@@ -71,5 +76,10 @@ require("gitsigns").setup({
 })
 
 require("lualine").setup({
-  options = { theme = "auto" },
+  options = {
+    icons_enabled = false,
+    theme = "auto",
+    component_separators = "|",
+    section_separators = "",
+  },
 })

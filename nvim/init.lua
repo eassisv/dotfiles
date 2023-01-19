@@ -14,7 +14,6 @@ require("myconf.plugins")
 require("myconf.cmp")
 require("myconf.lsp")
 
-
 local augroup = vim.api.nvim_create_augroup
 local autocmd = vim.api.nvim_create_autocmd
 
@@ -34,6 +33,18 @@ autocmd("FileType", {
       once = true,
       command = "bd!",
       buffer = args.buf,
+    })
+  end,
+})
+
+local yank_group = augroup("YankGroup", {})
+autocmd("TextYankPost", {
+  group = yank_group,
+  pattern = "*",
+  callback = function()
+    vim.highlight.on_yank({
+      higroup = "IncSearch",
+      timeout = 70,
     })
   end,
 })
