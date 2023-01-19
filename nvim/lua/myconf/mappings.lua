@@ -40,7 +40,7 @@ vim.api.nvim_create_autocmd("FileType", {
   group = netrw_mappings_group,
   pattern = "netrw",
   callback = function(args)
-    M.nmap("l", "<cr>", { silent = true, remap = true, buffer = args.buf })
+    nmap("l", "<cr>", { silent = true, remap = true, buffer = args.buf })
   end,
 })
 
