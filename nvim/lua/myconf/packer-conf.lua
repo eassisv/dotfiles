@@ -56,7 +56,6 @@ require("packer").startup(function(use)
   use("nvim-lualine/lualine.nvim")
 
   use("gpanders/editorconfig.nvim")
-  use("MunifTanjim/exrc.nvim")
 
   if packer_bootstrap then
     require("packer").sync()

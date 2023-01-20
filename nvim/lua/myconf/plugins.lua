@@ -7,7 +7,6 @@ local nmap = require("myconf.mappings").nmap
 require("Comment").setup()
 require("nvim-surround").setup()
 require("nvim-autopairs").setup()
-require("exrc").setup()
 
 require("nvim-treesitter.configs").setup({
   ensure_installed = { "lua", "vim" },
@@ -33,15 +32,15 @@ require("telescope").load_extension("fzf")
 local builtin = require("telescope.builtin")
 
 nmap("\\", builtin.buffers)
-nmap("<leader>sf", builtin.find_files)
-nmap("<leader>lg", builtin.live_grep)
-nmap("<leader>*", builtin.grep_string)
-nmap("<leader>bff", builtin.current_buffer_fuzzy_find)
-nmap("<leader>sht", builtin.help_tags)
-nmap("<leader>lr", builtin.lsp_references)
-nmap("<leader>sd", builtin.diagnostics)
+nmap("<leader>ff", builtin.find_files, { desc = "Find File" })
+nmap("<leader>fg", builtin.live_grep, { desc = "Find Grep" })
+nmap("<leader>*", builtin.grep_string, { desc = "Find Current String" })
+nmap("<leader>fs", builtin.current_buffer_fuzzy_find, { desc = "Fuzzy Find String" })
+nmap("<leader>sht", builtin.help_tags, { desc = "Search Help Tags" })
+nmap("<leader>lr", builtin.lsp_references, { desc = "List LSP References" })
+nmap("<leader>sd", builtin.diagnostics, { desc = "Search Workspace Diagnostic" })
 nmap("<leader>sld", function()
-  builtin.diagnostics({ bufnr = 0 })
+  builtin.diagnostics({ bufnr = 0 }, { desc = "Search Diagnostic" })
 end)
 
 require("harpoon").setup()

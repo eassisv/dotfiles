@@ -17,6 +17,7 @@ vim.opt.undofile = true
 vim.opt.updatetime = 300
 vim.opt.spell = true
 vim.opt.spelllang = "en_us,pt_br"
+vim.opt.exrc = true
 
 vim.g.mapleader = " "
 
