@@ -1,3 +1,6 @@
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
 local ok, impatient = pcall(require, "impatient")
 
 if not ok then

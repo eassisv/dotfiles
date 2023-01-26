@@ -54,6 +54,8 @@ require("packer").startup(function(use)
   use("tpope/vim-fugitive")
   use("lewis6991/gitsigns.nvim")
   use("nvim-lualine/lualine.nvim")
+  use("akinsho/toggleterm.nvim")
+  use("nvim-tree/nvim-tree.lua")
 
   use("gpanders/editorconfig.nvim")
 

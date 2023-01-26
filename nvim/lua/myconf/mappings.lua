@@ -28,7 +28,7 @@ nmap("<M-k>", "mz:m-2<cr>`z", { desc = "Move line down" })
 nmap("<C-d>", "<C-d>zz")
 nmap("<C-u>", "<C-u>zz")
 
-nmap("<leader>te", ":Explore<cr>")
+-- nmap("<leader>te", ":Explore<cr>")
 nmap("<leader>gs", ":Git<cr>")
 
 -- Move lines and selections

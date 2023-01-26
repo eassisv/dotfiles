@@ -8,6 +8,15 @@ require("Comment").setup()
 require("nvim-surround").setup()
 require("nvim-autopairs").setup()
 
+require("toggleterm").setup({
+  open_mapping = "<C-/>",
+})
+
+require("nvim-tree").setup()
+
+nmap("<leader>te", "<cmd>NvimTreeToggle<cr>")
+nmap("<leader>tff", "<cmd>NvimTreeFindFileToggle<cr>")
+
 require("nvim-treesitter.configs").setup({
   ensure_installed = { "lua", "vim" },
   sync_install = false,
