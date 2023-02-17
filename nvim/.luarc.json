@@ -56,6 +56,8 @@
         "/home/everton/.local/share/nvim/site/pack/packer/start/cmp_luasnip/after",
         "/home/everton/.local/share/nvim/site/pack/packer/start/editorconfig.nvim/after",
         "/usr/share/vim/vimfiles",
-        "${3rd}/luassert/library"
-    ]
+        "${3rd}/luassert/library",
+        "${3rd}/luv/library"
+    ],
+    "workspace.checkThirdParty": false
 }
