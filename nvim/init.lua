@@ -7,7 +7,7 @@ require("myconf.options")
 require("myconf.mappings")
 require("myconf.lazy")
 
-local function color_my_editor(color)
+local function color_my_editor(color, transparent)
 	local set_colors = function()
 		if type(color) == "function" then
 			color()
@@ -23,26 +23,28 @@ local function color_my_editor(color)
 		vim.cmd.colorscheme("habamax")
 	end
 
-	vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
-	vim.api.nvim_set_hl(0, "NormalNC", { bg = "none" })
-	vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
-	vim.api.nvim_set_hl(0, "SpellBad", { undercurl = true })
+	if transparent ~= false then
+		vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+		vim.api.nvim_set_hl(0, "NormalNC", { bg = "none" })
+		vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
+		vim.api.nvim_set_hl(0, "SpellBad", { undercurl = true })
+	end
 end
 
-color_my_editor("rose-pine")
+color_my_editor("github_dark_dimmed")
 
 local augroup = vim.api.nvim_create_augroup
 local autocmd = vim.api.nvim_create_autocmd
 
-local vim_enter_group =
-	augroup("CdWhenOpenWithDir", {}), autocmd("VimEnter", {
-		group = vim_enter_group,
-		callback = function()
-			if vim.fn.argc() == 1 and vim.fn.isdirectory(vim.fn.argv(0)) == 1 then
-				vim.cmd(":cd " .. vim.fn.argv(0))
-			end
-		end,
-	})
+local vim_enter_group = augroup("CdWhenOpenWithDir", {})
+autocmd("VimEnter", {
+	group = vim_enter_group,
+	callback = function()
+		if vim.fn.argc() == 1 and vim.fn.isdirectory(vim.fn.argv(0)) == 1 then
+			vim.cmd(":cd " .. vim.fn.argv(0))
+		end
+	end,
+})
 
 local on_term_open_group = augroup("OnTermOpen", {})
 autocmd("TermOpen", {
