@@ -91,6 +91,13 @@ return {
 					}
 				end
 
+				if server == "tsserver" then
+					local is_flow_project = lsp.util.root_pattern({ ".flowconfig" })(vim.loop.cwd())
+					if is_flow_project then
+						return
+					end
+				end
+
 				if server == "jsonls" then
 					options.settings = {
 						json = {
@@ -103,6 +110,7 @@ return {
 				lsp[server].setup(options)
 			end
 
+			setup_server("flow")
 			require("mason-lspconfig").setup_handlers({
 				setup_server,
 			})
