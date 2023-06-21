@@ -133,5 +133,5 @@ return {
 
 	{ "folke/trouble.nvim", cmd = { "Trouble", "TroubleToggle" } },
 	{ "ray-x/lsp_signature.nvim", cmd = { "LspAttach" }, opts = { bind = true } },
-	{ "j-hui/fidget.nvim", event = { "LspAttach" }, opts = { text = { spinner = "dots" } } },
+	{ "j-hui/fidget.nvim", event = { "LspAttach" }, opts = { text = { spinner = "dots" } }, branch = "legacy" },
 }

@@ -40,4 +40,22 @@ return {
 			})
 		end,
 	},
+	{
+		"mhartington/oceanic-next",
+		lazy = true,
+		config = function()
+			vim.g.oceanic_next_terminal_bold = 0
+			vim.g.oceanic_next_terminal_italic = 1
+		end,
+	},
+  {
+    "sainnhe/sonokai",
+    lazy = true,
+    config = function ()
+      vim.g.sonokai_style = 'shusia'
+      vim.g.sonokai_better_performance = 1
+      vim.g.sonokai_transparent_background = 2
+      vim.g.sonokai_dim_inactive_windows = 1
+    end
+  }
 }

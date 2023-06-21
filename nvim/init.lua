@@ -27,11 +27,14 @@ local function color_my_editor(color, transparent)
 		vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
 		vim.api.nvim_set_hl(0, "NormalNC", { bg = "none" })
 		vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
-		vim.api.nvim_set_hl(0, "SpellBad", { undercurl = true })
+		vim.api.nvim_set_hl(0, "SignColumn", { bg = "none" })
+		vim.api.nvim_set_hl(0, "EndOfBuffer", { bg = "none" })
+		vim.api.nvim_set_hl(0, "LineNr", { bg = "none" })
 	end
+	vim.api.nvim_set_hl(0, "SpellBad", { undercurl = true })
 end
 
-color_my_editor("github_dark_dimmed")
+color_my_editor("sonokai")
 
 local augroup = vim.api.nvim_create_augroup
 local autocmd = vim.api.nvim_create_autocmd
