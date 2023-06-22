@@ -34,7 +34,7 @@ local function color_my_editor(color, transparent)
 	vim.api.nvim_set_hl(0, "SpellBad", { undercurl = true })
 end
 
-color_my_editor("sonokai")
+color_my_editor("github_dark_high_contrast", false)
 
 local augroup = vim.api.nvim_create_augroup
 local autocmd = vim.api.nvim_create_autocmd
