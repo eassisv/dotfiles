@@ -3,7 +3,7 @@ local map = vim.keymap.set
 -- TODO: merge options
 local function _map(mode)
   return function(lhs, rhs, opts)
-    opts = vim.tbl_extend("force", { silent = true, remap = false }, opts or {})
+    opts = vim.tbl_extend("force", { silent = true, noremap = true }, opts or {})
     map(mode, lhs, rhs, opts)
   end
 end
