@@ -12,7 +12,6 @@ vim.opt.laststatus = 3
 vim.opt.tabstop = 2
 vim.opt.shiftwidth = 2
 vim.opt.expandtab = true
-vim.opt.smarttab = true
 
 vim.opt.ignorecase = true
 vim.opt.smartcase = true

@@ -38,15 +38,13 @@ end
 return {
   {
     "williamboman/mason.nvim",
-    cmd = { "Mason", 
-"MasonInstall", "MasonUninstall", "MasonUninstallAll", "MasonLog", "MasonUpdate" },
+    cmd = { "Mason", "MasonInstall", "MasonUninstall", "MasonUninstallAll", "MasonLog", "MasonUpdate" },
     config = true,
   },
   {
     "neovim/nvim-lspconfig",
     event = { "BufReadPre", "BufNewFile" },
     dependencies = {
-      "mason.nvim",
       {
         "williamboman/mason-lspconfig.nvim",
         opts = {
@@ -65,7 +63,7 @@ return {
 
       vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded" })
       vim.lsp.handlers["textDocument/signatureHelp"] =
-        vim.lsp.with(vim.lsp.handlers.signature_help, { border = "rounded" })
+          vim.lsp.with(vim.lsp.handlers.signature_help, { border = "rounded" })
 
       nmap("<leader>e", vim.diagnostic.open_float)
       nmap("[d", vim.diagnostic.goto_prev)
@@ -113,18 +111,16 @@ return {
     "jay-babu/mason-null-ls.nvim",
     event = { "BufReadPre", "BufNewFile" },
     dependencies = {
-      "mason.nvim",
       { "jose-elias-alvarez/null-ls.nvim", config = true },
     },
     opts = {
-      ensure_installed = { "stylua" },
       automatic_setup = true,
       handlers = {},
     },
   },
-  { "b0o/SchemaStore.nvim", lazy = true },
-  { "folke/trouble.nvim", cmd = { "Trouble", "TroubleToggle" } },
-  { "ray-x/lsp_signature.nvim", cmd = { "LspAttach" }, opts = { bind = true } },
+  { "b0o/SchemaStore.nvim",     lazy = true },
+  { "folke/trouble.nvim",       cmd = { "Trouble", "TroubleToggle" } },
+  { "ray-x/lsp_signature.nvim", cmd = { "LspAttach" },               opts = { bind = true } },
   {
     "j-hui/fidget.nvim",
     event = { "LspAttach" },
