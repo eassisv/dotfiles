@@ -29,7 +29,6 @@ nmap("<C-d>", "<C-d>zz")
 nmap("<C-u>", "<C-u>zz")
 
 -- nmap("<leader>te", ":Explore<cr>")
-nmap("<leader>gs", ":Git<cr>")
 
 -- Move lines and selections
 vmap("<M-j>", ":m'>+<cr>`<my`>mzgv`yo`z", { desc = "Move selection up" })

@@ -1,5 +1,12 @@
 return {
-  "tpope/vim-fugitive",
+  {
+    "tpope/vim-fugitive",
+    keys = {
+      { "<leader>gs", "<cmd>Git<cr>", mode = { "n", "t" }, desc = "Open fugitive window" }
+    },
+    event = { "BufReadPre", "BufNewFile" },
+    cmd = { "Git" },
+  },
   {
     "lewis6991/gitsigns.nvim",
     event = { "BufReadPre", "BufNewFile" },
@@ -11,8 +18,8 @@ return {
       },
     },
   },
-  { "kylechui/nvim-surround", event = { "VeryLazy" }, config = true },
-  { "windwp/nvim-autopairs", event = { "InsertEnter" }, config = true },
+  { "kylechui/nvim-surround", event = { "VeryLazy" },    config = true },
+  { "windwp/nvim-autopairs",  event = { "InsertEnter" }, config = true },
   {
     "numToStr/Comment.nvim",
     event = { "BufReadPre", "BufNewFile" },
@@ -27,7 +34,7 @@ return {
     cmd = { "NvimTreeToggle", "NvimTreeFindFile" },
     dependencies = { "nvim-tree/nvim-web-devicons" },
     keys = {
-      { "<leader>te", "<cmd>NvimTreeToggle<cr>", desc = "Toggle NvimTree explorer" },
+      { "<leader>te",  "<cmd>NvimTreeToggle<cr>",   desc = "Toggle NvimTree explorer" },
       { "<leader>tfe", "<cmd>NvimTreeFindFile<cr>", desc = "Open NvimTree explorer on current file" },
     },
     config = function()
