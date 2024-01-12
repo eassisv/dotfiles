@@ -16,8 +16,18 @@ return {
   },
   {
     "navarasu/onedark.nvim",
-    opts = {
-      style = "warmer",
-    },
+    config = function()
+      require('onedark').setup({
+        style = "warm"
+      })
+
+      require('onedark').load()
+    end
   },
+  {
+    "rebelot/kanagawa.nvim",
+    opts = {
+      theme = "dragon"
+    }
+  }
 }

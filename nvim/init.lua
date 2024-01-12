@@ -31,7 +31,7 @@ local function color_my_editor(color, transparent)
   vim.api.nvim_set_hl(0, "SpellBad", { undercurl = true })
 end
 
-color_my_editor("default", false)
+color_my_editor("rose-pine", false)
 
 local augroup = vim.api.nvim_create_augroup
 local autocmd = vim.api.nvim_create_autocmd
