@@ -1,79 +1,46 @@
-vim.loader.enable()
+require('myconf.options')
+require('myconf.mappings')
+require('myconf.autocmds')
+require('myconf.lazy_init')
 
-require("myconf.options")
-require("myconf.mappings")
-require("myconf.lazy")
+vim.env.PATH = '/home/everton.vieira/.nodenv/versions/20.11.0/bin:' .. vim.env.PATH
 
-local function color_my_editor(color, transparent)
-  local set_colors = function()
-    if type(color) == "function" then
-      color()
-    else
-      vim.cmd.colorscheme(color)
+---@param color string
+---@param transparent? boolean
+---@param theme? 'dark' | 'light
+local function color_my_editor(color, transparent, theme)
+    if vim.fn.has('termguicolors') then
+        vim.o.termguicolors = true
     end
-  end
 
-  local ok, _ = pcall(set_colors)
+    vim.o.background = theme or 'dark'
+    vim.cmd.colorscheme(color)
 
-  if not ok then
-    vim.notify("Cannot load colorscheme " .. vim.inspect(color), vim.log.levels.ERROR)
-    vim.cmd.colorscheme("habamax")
-  end
+    if transparent ~= false then
+        vim.api.nvim_set_hl(0, 'Normal', { bg = 'none' })
+        vim.api.nvim_set_hl(0, 'NormalNC', { bg = 'none' })
+        vim.api.nvim_set_hl(0, 'NormalFloat', { bg = 'none' })
+        vim.api.nvim_set_hl(0, 'SignColumn', { bg = 'none' })
+        vim.api.nvim_set_hl(0, 'EndOfBuffer', { bg = 'none' })
+        vim.api.nvim_set_hl(0, 'LineNr', { bg = 'none' })
 
-  if transparent ~= false then
-    vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
-    vim.api.nvim_set_hl(0, "NormalNC", { bg = "none" })
-    vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
-    vim.api.nvim_set_hl(0, "SignColumn", { bg = "none" })
-    vim.api.nvim_set_hl(0, "EndOfBuffer", { bg = "none" })
-    vim.api.nvim_set_hl(0, "LineNr", { bg = "none" })
-  end
-  vim.api.nvim_set_hl(0, "SpellBad", { undercurl = true })
+        vim.api.nvim_set_hl(0, 'FloatBorder', { bg = 'none' })
+        vim.api.nvim_set_hl(0, 'FloatTitle', { bg = 'none' })
+
+        vim.api.nvim_set_hl(0, 'TelescopeNormal', { bg = 'none' })
+        vim.api.nvim_set_hl(0, 'TelescopePreviewNormal', { bg = 'none' })
+        vim.api.nvim_set_hl(0, 'TelescopeBorder', { bg = 'none' })
+        vim.api.nvim_set_hl(0, 'TelescopeTitle', { bg = 'none' })
+    end
+    vim.api.nvim_set_hl(0, 'SpellBad', { undercurl = true })
 end
 
-color_my_editor("rose-pine", false)
-
-local augroup = vim.api.nvim_create_augroup
-local autocmd = vim.api.nvim_create_autocmd
-
-local vim_enter_group = augroup("CdWhenOpenWithDir", {})
-autocmd("VimEnter", {
-  group = vim_enter_group,
-  callback = function()
-    if vim.fn.argc() == 1 and vim.fn.isdirectory(vim.fn.argv(0)) == 1 then
-      vim.cmd(":cd " .. vim.fn.argv(0))
-    end
-  end,
-})
-
-local on_term_open_group = augroup("OnTermOpen", {})
-autocmd("TermOpen", {
-  group = on_term_open_group,
-  pattern = "*",
-  command = "setlocal nospell",
-})
-
-local qf_group = augroup("QfGroup", {})
-autocmd("FileType", {
-  group = qf_group,
-  pattern = "qf",
-  callback = function(args)
-    autocmd("BufLeave", {
-      once = true,
-      command = "bd!",
-      buffer = args.buf,
-    })
-  end,
-})
-
-local yank_group = augroup("YankGroup", {})
-autocmd("TextYankPost", {
-  group = yank_group,
-  pattern = "*",
-  callback = function()
-    vim.highlight.on_yank({
-      higroup = "IncSearch",
-      timeout = 70,
-    })
-  end,
-})
+color_my_editor('rose-pine')
+-- color_my_editor('github_dark_default')
+-- color_my_editor('nightfox')
+-- color_my_editor('github_light_high_contrast', false, 'light')
+-- color_my_editor('gruber-darker', false)
+-- color_my_editor('dracula-soft')
+-- color_my_editor('rasmus', false)
+-- color_my_editor('nord')
+-- color_my_editor('calvera')
