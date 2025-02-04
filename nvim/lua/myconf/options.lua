@@ -8,16 +8,18 @@ vim.opt.relativenumber = true
 vim.opt.signcolumn = 'yes'
 vim.opt.cursorline = true
 
-vim.opt.tabstop = 4
-vim.opt.shiftwidth = 4
+vim.opt.tabstop = 2
+vim.opt.shiftwidth = 2
 vim.opt.expandtab = true
 
--- vim.opt.list = true
--- vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣', eol = '↲' }
+vim.opt.jumpoptions = 'stack'
+
+vim.opt.list = true
+vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣', eol = '↲' }
 
 vim.opt.mouse = 'a'
 vim.opt.scrolloff = 7
-vim.opt.completeopt = { 'menu', 'menuone', 'preview' }
+vim.opt.completeopt = { 'menu', 'menuone', 'noselect' }
 
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
