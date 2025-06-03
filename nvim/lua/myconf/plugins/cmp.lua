@@ -8,6 +8,7 @@ return {
       'hrsh7th/cmp-cmdline',
       'hrsh7th/cmp-nvim-lua',
       'hrsh7th/cmp-nvim-lsp-signature-help',
+      'hrsh7th/cmp-nvim-lsp',
       {
         'L3MON4D3/LuaSnip',
         versioin = 'v2.*',
@@ -26,13 +27,31 @@ return {
         snippet = {
           expand = function(args) luasnip.lsp_expand(args.body) end,
         },
-        ---@diagnostic disable-next-line: missing-fields
-        formatting = { format = lspkind.cmp_format() },
-        window = {
-          completion = { border = 'rounded' },
-          documentation = { border = 'rounded' },
+        formatting = {
+          fields = { 'menu', 'abbr', 'kind' },
+          format = function(entry, item)
+            local kind_icon = lspkind.symbolic(item.kind, { mode = 'symbol' })
+            item.kind = string.format('%s  %s', kind_icon, item.kind)
+
+            item.menu = ({
+              buffer = '[Buff]',
+              nvim_lsp = '[LSP]',
+              luasnip = '[Snip]',
+              nvim_lua = '[Lua]',
+              cmdline = '[CMD]',
+              path = '[Path]',
+            })[entry.source.name]
+
+            item.menu = item.menu or entry.source.name
+
+            return item
+          end,
         },
-        mapping = {
+        window = {
+          completion = cmp.config.window.bordered(),
+          documentation = cmp.config.window.bordered(),
+        },
+        mapping = cmp.mapping.preset.insert({
           ['<C-Space>'] = cmp.mapping.complete(),
           ['<C-n>'] = cmp.mapping.select_next_item(),
           ['<C-p>'] = cmp.mapping.select_prev_item(),
@@ -42,17 +61,21 @@ return {
           ['<C-f>'] = cmp.mapping.scroll_docs(-4),
           ['<C-b>'] = cmp.mapping.scroll_docs(4),
 
-          ['<C-k>'] = cmp.mapping(function()
+          ['<C-l>'] = cmp.mapping(function(fallback)
             if luasnip.expand_or_jumpable() then
               luasnip.expand_or_jump()
+            else
+              fallback()
             end
           end, { 'i', 's' }),
-          ['<C-j>'] = cmp.mapping(function()
+          ['<C-h>'] = cmp.mapping(function(fallback)
             if luasnip.jumpable(-1) then
               luasnip.jump(-1)
+            else
+              fallback()
             end
           end, { 'i', 's' }),
-        },
+        }),
 
         sources = cmp.config.sources({
           { name = 'lazydev' },
@@ -66,7 +89,6 @@ return {
       })
 
       cmp.setup.cmdline({ '/', '?' }, {
-        -- TODO: map by myself
         mapping = cmp.mapping.preset.cmdline(),
         sources = {
           { name = 'buffer' },
@@ -74,7 +96,6 @@ return {
       })
 
       cmp.setup.cmdline(':', {
-        -- TODO: map by myself
         mapping = cmp.mapping.preset.cmdline(),
         sources = {
           { name = 'cmdline' },
@@ -82,8 +103,20 @@ return {
         },
       })
 
-      cmp.event:on('confirm_done', require('nvim-autopairs.completion.cmp').on_confirm_done())
+      local capabilities = vim.lsp.protocol.make_client_capabilities()
+      capabilities =
+        vim.tbl_deep_extend('force', capabilities, require('cmp_nvim_lsp').default_capabilities(capabilities))
+
+      vim.lsp.config('*', {
+        capabilities = capabilities,
+      })
     end,
   },
-  { 'github/copilot.vim', event = 'VeryLazy' },
+  {
+    'github/copilot.vim',
+    config = function()
+      vim.keymap.set('i', '<C-j>', 'copilot#Accept("<CR>")', { expr = true, silent = true, replace_keycodes = false })
+      vim.g.copilot_no_tab_map = true
+    end,
+  },
 }

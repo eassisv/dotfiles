@@ -1,25 +1,30 @@
 return {
   {
     'nvim-treesitter/nvim-treesitter',
-    event = { 'VeryLazy', 'BufReadPre', 'BufNewFile' },
+    dependencies = {
+      'nvim-treesitter/nvim-treesitter-textobjects',
+      'nvim-treesitter/nvim-treesitter-refactor',
+      'windwp/nvim-ts-autotag',
+      {
+        'JoosepAlviste/nvim-ts-context-commentstring',
+        config = function() require('ts_context_commentstring').setup({ enable_autocmd = false }) end,
+      },
+    },
     config = function()
       require('nvim-treesitter.configs').setup({
         ensure_installed = { 'lua', 'vim', 'vimdoc' },
         sync_install = false,
+        auto_install = false,
+        ignore_install = {},
+        modules = {},
+
         highlight = {
           enable = true,
           additional_vim_regex_highlighting = false,
         },
-      })
-    end,
-  },
-  {
-    'nvim-treesitter/nvim-treesitter-textobjects',
-    dependencies = { 'nvim-treesitter' },
-    event = { 'BufReadPre', 'BufNewFile' },
-    config = function()
-      require('nvim-treesitter.configs').setup({
+
         textobjects = {
+          lookahead = true,
           select = {
             enable = true,
             lookahead = true,
@@ -57,15 +62,7 @@ return {
             },
           },
         },
-      })
-    end,
-  },
-  {
-    'RRethy/nvim-treesitter-textsubjects',
-    dependencies = { 'nvim-treesitter' },
-    event = { 'BufReadPre', 'BufNewFile' },
-    config = function()
-      require('nvim-treesitter.configs').setup({
+
         textsubjects = {
           enable = true,
           prev_selection = ',',
@@ -76,25 +73,6 @@ return {
           },
         },
       })
-    end,
-  },
-  {
-    'windwp/nvim-ts-autotag',
-    event = { 'BufReadPre', 'BufNewFile' },
-    dependencies = {
-      'nvim-treesitter',
-    },
-    config = function() require('nvim-ts-autotag').setup() end,
-  },
-  {
-    'JoosepAlviste/nvim-ts-context-commentstring',
-    event = { 'BufReadPre', 'BufNewFile' },
-    dependencies = {
-      'nvim-treesitter',
-    },
-    config = function()
-      vim.g.skip_ts_context_commentstring_module = true
-      require('ts_context_commentstring').setup({ enable_autocmd = false })
     end,
   },
 }

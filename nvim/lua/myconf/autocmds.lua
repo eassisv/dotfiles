@@ -1,16 +1,6 @@
 local augroup = vim.api.nvim_create_augroup
 local autocmd = vim.api.nvim_create_autocmd
 
-local vim_enter_group = augroup('CdWhenOpenWithDir', {})
-autocmd('VimEnter', {
-  group = vim_enter_group,
-  callback = function()
-    if vim.fn.argc() == 1 and vim.fn.isdirectory(vim.fn.argv(0)) == 1 then
-      vim.cmd(':cd ' .. vim.fn.argv(0))
-    end
-  end,
-})
-
 local on_term_open_group = augroup('OnTermOpen', {})
 autocmd('TermOpen', {
   group = on_term_open_group,
@@ -46,4 +36,10 @@ autocmd('FileWritePost', {
 
     vim.system({ 'rm', '-f', opts.file }):wait()
   end,
+})
+
+autocmd('FileType', {
+  group = augroup('SetFiletype', {}),
+  pattern = 'init.lua',
+  callback = function() vim.keymap.set('n','<leader>x', ':so<cr>', { desc = 'Source current file' }) end,
 })

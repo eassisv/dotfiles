@@ -1,55 +1,38 @@
-local map = vim.keymap.set
-
-local function _map(mode)
-  return function(lhs, rhs, opts)
-    opts = vim.tbl_deep_extend('force', { silent = true, noremap = true }, opts or {})
-    map(mode, lhs, rhs, opts)
-  end
-end
-
-local nmap = _map('n')
-local vmap = _map('v')
-
-nmap('<leader>w', ':w!<cr>', { desc = 'Quick save' })
-nmap('<leader>q', ':q!<cr>', { desc = 'Quick quit' })
-nmap('<leader>l', ':nohl<cr>', { desc = 'No highlight!' })
-nmap('<leader>so', ':so $MYVIMRC<cr>', { desc = 'Reload config file' })
-nmap('<leader>x', ':so<cr>', { desc = 'Source current file' })
+vim.keymap.set('n', '<leader>w', ':w!<cr>', { desc = 'Quick save' })
+vim.keymap.set('n', '<leader>q', ':q!<cr>', { desc = 'Quick quit' })
+vim.keymap.set('n', '<leader>l', ':nohl<cr>', { desc = 'No highlight!' })
+vim.keymap.set('n', '<leader>so', ':so $MYVIMRC<cr>', { desc = 'Reload config file' })
 
 -- windows change
-nmap('<C-j>', '<C-W>j', { desc = 'Move to window below' })
-nmap('<C-k>', '<C-W>k', { desc = 'Move to window above' })
-nmap('<C-h>', '<C-W>h', { desc = 'Move to left window' })
-nmap('<C-l>', '<C-W>l', { desc = 'Move to right window' })
+vim.keymap.set('n', '<C-j>', '<C-W>j', { desc = 'Move to window below' })
+vim.keymap.set('n', '<C-k>', '<C-W>k', { desc = 'Move to window above' })
+vim.keymap.set('n', '<C-h>', '<C-W>h', { desc = 'Move to left window' })
+vim.keymap.set('n', '<C-l>', '<C-W>l', { desc = 'Move to right window' })
 
 -- move lines
-nmap('<M-j>', 'mz:m+<cr>`z', { desc = 'Move line up' })
-nmap('<M-k>', 'mz:m-2<cr>`z', { desc = 'Move line down' })
+vim.keymap.set('n', '<M-j>', 'mz:m+<cr>`z', { desc = 'Move line up' })
+vim.keymap.set('n', '<M-k>', 'mz:m-2<cr>`z', { desc = 'Move line down' })
 
-nmap('<C-d>', '<C-d>zz')
-nmap('<C-u>', '<C-u>zz')
-map('', 'j', 'gj', { desc = 'Move down visual line' })
-map('', 'k', 'gk', { desc = 'Move up visual line' })
+vim.keymap.set('n', '<C-d>', '<C-d>zz', { desc = 'Scroll down and center' })
+vim.keymap.set('n', '<C-u>', '<C-u>zz', { desc = 'Scroll up and center' })
+vim.keymap.set('n', 'j', 'gj', { desc = 'Move down visual line' })
+vim.keymap.set('n', 'k', 'gk', { desc = 'Move up visual line' })
 
-nmap('<leader>cp', function()
+vim.keymap.set('n', '<leader>cp', function()
   local filename = vim.fn.expand('%:p')
   local cwd = vim.uv.cwd()
 
+  if not cwd or not filename then
+    return
+  end
+
   local filepath_in_project = filename:sub(cwd:len() + 1)
   vim.fn.setreg('+', filepath_in_project)
+  vim.notify('Copied file path: ' .. filepath_in_project, vim.log.levels.INFO)
 end, { desc = 'Copy file path in project' })
 
--- nmap("<leader>te", ":Explore<cr>")
-
 -- Move lines and selections
-vmap('<M-j>', ":m'>+<cr>`<my`>mzgv`yo`z", { desc = 'Move selection up' })
-vmap('<M-k>', ":m'<-2<cr>`<my`>mzgv`yo`z", { desc = 'Move selection down' })
+vim.keymap.set('v', '<M-j>', ":m'>+<cr>`<my`>mzgv`yo`z", { desc = 'Move selection up' })
+vim.keymap.set('v', '<M-k>', ":m'<-2<cr>`<my`>mzgv`yo`z", { desc = 'Move selection down' })
 
-vim.cmd('tnoremap <C-[> <C-\\><C-n>')
-
-local M = {
-  nmap = nmap,
-  vmap = vmap,
-}
-
-return M
+vim.keymap.set('t', '<C-[>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
