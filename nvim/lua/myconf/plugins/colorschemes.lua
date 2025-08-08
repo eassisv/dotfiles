@@ -39,7 +39,12 @@ return {
     'folke/tokyonight.nvim',
     lazy = true,
     priority = 1000,
-    opts = {},
+    opts = {
+      style = 'storm',
+      styles = {
+        keywords = { italic = false },
+      }
+    },
   },
   {
     'rose-pine/neovim',

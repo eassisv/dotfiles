@@ -50,7 +50,12 @@ vim.api.nvim_create_autocmd('LspAttach', {
 })
 
 vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Show diagnostics' })
-vim.keymap.set( 'n', '[d', function() vim.diagnostic.jump({ count = -1, float = true }) end, { desc = 'Prev diagnostic' })
+vim.keymap.set(
+  'n',
+  '[d',
+  function() vim.diagnostic.jump({ count = -1, float = true }) end,
+  { desc = 'Prev diagnostic' }
+)
 vim.keymap.set('n', ']d', function() vim.diagnostic.jump({ count = 1, float = true }) end, { desc = 'Next diagnostic' })
 
 return {
@@ -63,16 +68,16 @@ return {
         'mason-org/mason-lspconfig.nvim',
         opts = { ensure_installed = { 'lua_ls', 'ts_ls', 'pyright' } },
       },
-      {
-        'jay-babu/mason-null-ls.nvim',
-        opts = { ensure_installed = { 'stylua', 'eslint' }, handlers = {} },
-      },
-      {
-        'nvimtools/none-ls.nvim',
-        name = 'null-ls',
-        opts = {},
-      },
-      'nvimtools/none-ls-extras.nvim',
+      -- {
+      --   'jay-babu/mason-null-ls.nvim',
+      --   opts = { ensure_installed = { 'stylua', 'eslint' }, handlers = {} },
+      -- },
+      -- {
+      --   'nvimtools/none-ls.nvim',
+      --   name = 'null-ls',
+      --   opts = {},
+      -- },
+      -- 'nvimtools/none-ls-extras.nvim',
       'b0o/SchemaStore.nvim',
       { 'j-hui/fidget.nvim', opts = {} },
     },
@@ -94,6 +99,11 @@ return {
             validate = { enable = true },
           },
         },
+      })
+
+      require('mason').setup()
+      require('mason-lspconfig').setup({
+        automatic_enable = false,
       })
     end,
   },

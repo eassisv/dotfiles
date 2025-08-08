@@ -1,7 +1,27 @@
+---@diagnostic disable: missing-fields
+
+local function copilot_enabled()
+  local weekday = os.date('%w')
+
+  if weekday == '0' or weekday == '6' then
+    return false -- Disable on weekends (Sunday and Saturday)
+  end
+
+  local hour = tonumber(os.date('%H'))
+  local minute = tonumber(os.date('%M'))
+
+
+
+  -- if (hour >= 18 and minute > 30) or (hour < 8 and minute < 30) then
+  --   return false -- Disable after 18:30 and before 08:30
+  -- end
+
+  return true
+end
+
 return {
   {
     'hrsh7th/nvim-cmp',
-    event = { 'InsertEnter', 'CmdlineEnter' },
     dependencies = {
       'hrsh7th/cmp-buffer',
       'hrsh7th/cmp-path',
@@ -105,18 +125,18 @@ return {
 
       local capabilities = vim.lsp.protocol.make_client_capabilities()
       capabilities =
-        vim.tbl_deep_extend('force', capabilities, require('cmp_nvim_lsp').default_capabilities(capabilities))
+          vim.tbl_deep_extend('force', capabilities, require('cmp_nvim_lsp').default_capabilities(capabilities))
 
       vim.lsp.config('*', {
         capabilities = capabilities,
       })
     end,
   },
-  {
-    'github/copilot.vim',
-    config = function()
-      vim.keymap.set('i', '<C-j>', 'copilot#Accept("<CR>")', { expr = true, silent = true, replace_keycodes = false })
-      vim.g.copilot_no_tab_map = true
-    end,
-  },
+  -- {
+  --   'github/copilot.vim',
+  --   config = function()
+  --     vim.keymap.set('i', '<C-j>', 'copilot#Accept("<CR>")', { expr = true, silent = true, replace_keycodes = false })
+  --     vim.g.copilot_no_tab_map = true
+  --   end,
+  -- },
 }

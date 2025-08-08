@@ -24,7 +24,7 @@ require('lazy').setup('myconf.plugins', {
     },
   },
   install = {
-    colorscheme = { ColorScheme },
+    colorscheme = { vim.g.my_colorscheme or 'default' },
   },
   change_detection = {
     notify = false,

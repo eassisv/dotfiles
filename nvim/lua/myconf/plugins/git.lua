@@ -1,5 +1,10 @@
 return {
   {
+    'sindrets/diffview.nvim',
+    dependencies = { 'nvim-tree/nvim-web-devicons' },
+    opts = {},
+  },
+  {
     'tpope/vim-fugitive',
     config = function() vim.keymap.set('n', '<leader>gs', '<cmd>Git<cr>', { desc = 'Open fugitive window' }) end,
   },

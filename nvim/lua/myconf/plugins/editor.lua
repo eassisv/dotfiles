@@ -29,12 +29,6 @@ return {
     opts = {},
   },
   {
-    'MeanderingProgrammer/render-markdown.nvim',
-    ft = { 'markdown' },
-    dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' },
-    opts = { enable = true },
-  },
-  {
     'michaelrommel/nvim-silicon',
     cmd = 'Silicon',
     main = 'nvim-silicon',

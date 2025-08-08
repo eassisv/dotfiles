@@ -25,7 +25,7 @@ vim.opt.completeopt = { 'menu', 'menuone', 'noselect' }
 
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
-vim.opt.hlsearch = false
+vim.opt.hlsearch = true
 
 vim.opt.undofile = true
 vim.opt.history = 400
@@ -37,3 +37,4 @@ vim.opt.spelloptions = 'camel,noplainbuffer'
 vim.opt.spell = true
 
 vim.o.shortmess = vim.o.shortmess .. 'I'
+-- vim.o.messagesopt = 'wait:3,history:500'

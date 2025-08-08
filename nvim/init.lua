@@ -1,8 +1,8 @@
+require('myconf.setup-env-tools')
 require('myconf.options')
 require('myconf.mappings')
 require('myconf.autocmds')
 require('myconf.lazy-init')
-require('myconf.setup-env-tools')
 
-vim.g.my_colorscheme = 'solarized-osaka'
+vim.g.my_colorscheme = 'tokyonight'
 vim.cmd.colorscheme(vim.g.my_colorscheme)
