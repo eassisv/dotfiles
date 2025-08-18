@@ -36,5 +36,5 @@ vim.opt.spelllang = 'en_us,pt_br'
 vim.opt.spelloptions = 'camel,noplainbuffer'
 vim.opt.spell = true
 
-vim.o.shortmess = vim.o.shortmess .. 'I'
+vim.opt.shortmess:append({ I = true, A = true })
 -- vim.o.messagesopt = 'wait:3,history:500'
