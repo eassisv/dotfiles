@@ -3,6 +3,7 @@ vim.g.maplocalleader = ' '
 
 vim.schedule(function() vim.o.clipboard = 'unnamedplus' end)
 
+vim.opt.termguicolors = true
 vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.signcolumn = 'yes'

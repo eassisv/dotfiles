@@ -17,7 +17,7 @@ require('lazy').setup('myconf.plugins', {
   performance = {
     rtp = {
       reset = false,
-      disabled_plugins = { 'netrwPlugin' },
+      -- disabled_plugins = { 'netrwPlugin' },
     },
   },
   install = {

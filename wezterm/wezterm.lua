@@ -11,20 +11,20 @@ config.audible_bell = "Disabled"
 -- config.color_scheme = "Gruber (base16)"
 
 config.font = wezterm.font({
-	-- family = "Fira Code",
-	-- family = "IBM Plex Mono",
-	-- family = "Monaspace Neon",
-	-- family = "Ubuntu Mono",
-	-- family = "Iosevka Term",
-	-- family = "Source Code Pro",
-	family = "Hack",
-	weight = "Regular",
-	stretch = "Normal",
-	harfbuzz_features = { "calt=0", "clig=0", "liga=0" },
+  family = "Fira Code",
+  -- family = "IBM Plex Mono",
+  -- family = "Monaspace Neon",
+  -- family = "Ubuntu Mono",
+  -- family = "Iosevka Term",
+  -- family = "Source Code Pro",
+  -- family = "Ubuntu Sans Mono",
+  weight = "Regular",
+  stretch = "Normal",
+  harfbuzz_features = { "calt=0", "clig=0", "liga=0" },
 })
 
-config.font_size = 12
-config.freetype_load_flags = "NO_HINTING"
+-- config.font_size = 13
+-- config.freetype_load_flags = "NO_HINTING"
 config.freetype_load_target = "VerticalLcd"
 config.warn_about_missing_glyphs = false
 config.enable_scroll_bar = true
@@ -40,13 +40,13 @@ config.enable_scroll_bar = true
 -- config.webgpu_power_preference = "LowPower"
 
 config.colors = {
-	background = "#141414",
+  background = "#141414",
 
-	cursor_bg = "#e1e1e1",
-	cursor_fg = "#111",
+  cursor_bg = "#e1e1e1",
+  cursor_fg = "#111",
 }
 
--- config.window_background_opacity = 0.8
+-- config.window_background_opacity = 0.9
 -- config.background = {
 --   {
 --     source = {
@@ -60,27 +60,28 @@ config.colors = {
 config.tab_bar_at_bottom = true
 config.use_fancy_tab_bar = false
 config.hide_tab_bar_if_only_one_tab = true
--- config.window_decorations = "RESIZE"
+config.window_decorations = "INTEGRATED_BUTTONS | RESIZE"
+config.integrated_title_button_style = 'Gnome'
 
-config.window_padding = {
-	left = "0",
-	right = "0",
-	top = "0",
-	bottom = "0",
-}
+-- config.window_padding = {
+--   left = "0",
+--   right = "0",
+--   top = "0",
+--   bottom = "0",
+-- }
 
 config.keys = {
-	{
-		key = "RightArrow",
-		mods = "SHIFT",
-		action = wezterm.action.ActivateTabRelative(1),
-	},
+  {
+    key = "RightArrow",
+    mods = "SHIFT",
+    action = wezterm.action.ActivateTabRelative(1),
+  },
 
-	{
-		key = "LeftArrow",
-		mods = "SHIFT",
-		action = wezterm.action.ActivateTabRelative(-1),
-	},
+  {
+    key = "LeftArrow",
+    mods = "SHIFT",
+    action = wezterm.action.ActivateTabRelative(-1),
+  },
 }
 
 return config

@@ -1,0 +1,84 @@
+#!/usr/bin/env bash
+
+# Default search paths
+search_paths=("~/hurst/code")
+
+# Parse arguments
+if [[ $1 == "-f" ]]; then
+    shift
+    if [[ $# -eq 0 ]]; then
+        echo "Error: -f requires at least one folder path"
+        exit 1
+    fi
+    search_paths=("$@")
+elif [[ -n $1 ]]; then
+    # Single path provided - use directly, skip fzf selection
+    selected=$1
+fi
+
+# Project selection via fzf (if not already set)
+if [[ -z $selected ]]; then
+    # Build find command from search paths
+    find_cmd=""
+    for path in "${search_paths[@]}"; do
+        # Expand ~ in paths
+        expanded_path="${path/#\~/$HOME}"
+        if [[ -n $find_cmd ]]; then
+            find_cmd+=" "
+        fi
+        find_cmd+="$expanded_path"
+    done
+
+    selected=$(find $find_cmd -mindepth 1 -maxdepth 1 -type d 2>/dev/null | fzf)
+fi
+
+if [[ -z $selected ]]; then
+    exit 0
+fi
+
+selected_name=$(basename "$selected" | tr . _)
+
+# Check for git worktrees
+worktree_output=$(git -C "$selected" worktree list 2>&1)
+
+if [[ $? -eq 0 ]]; then
+    worktree_count=$(echo "$worktree_output" | wc -l)
+
+    if [[ $worktree_count -gt 1 ]]; then
+        # Multiple worktrees - let user select
+        selected_worktree=$(echo "$worktree_output" | fzf --prompt="Select worktree: ")
+
+        if [[ -n "$selected_worktree" ]]; then
+            # Extract worktree path (first column)
+            worktree_path=$(echo "$selected_worktree" | awk '{print $1}')
+            # Extract branch name from brackets [branch-name]
+            selected_branch=$(echo "$selected_worktree" | grep -o '\[.*\]' | tr -d '[]')
+            selected="$worktree_path"
+        fi
+    else
+        # Single worktree - just extract branch name
+        selected_branch=$(echo "$worktree_output" | grep -o '\[.*\]' | tr -d '[]')
+    fi
+fi
+
+# Build session name with optional branch
+if [[ -n "$selected_branch" ]]; then
+    selected_name="${selected_name}_${selected_branch//\//-}"
+fi
+tmux_running=$(pgrep tmux)
+
+if [[ -z $TMUX ]] && [[ -z $tmux_running ]]; then
+    tmux new-session -s $selected_name -c $selected
+    exit 0
+fi
+
+if ! tmux has-session -t=$selected_name 2> /dev/null; then
+    tmux new-session -ds $selected_name -c $selected
+fi
+
+if [[ -z $TMUX ]]; then
+    tmux attach-session -t $selected_name
+else
+    tmux switch-client -t $selected_name
+fi
+

@@ -40,6 +40,7 @@ return {
     lazy = true,
     priority = 1000,
     opts = {
+      -- transparent = true,
       style = 'storm',
       styles = {
         keywords = { italic = false },
@@ -51,9 +52,14 @@ return {
     lazy = true,
     name = 'rose-pine',
     opts = {
+      transparent = true,
       varianty = 'main',
       dark_variant = 'main',
       disable_italics = true,
+      styles = {
+
+        transparency = false,
+      },
       highlight_groups = {
         ['function.builtin'] = { fg = 'love' },
         ['@function.builtin'] = { fg = 'love' },

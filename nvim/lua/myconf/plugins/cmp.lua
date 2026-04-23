@@ -98,6 +98,7 @@ return {
         }),
 
         sources = cmp.config.sources({
+          -- { name = 'avante' },
           { name = 'lazydev' },
           { name = 'nvim_lsp' },
           { name = 'luasnip' },
